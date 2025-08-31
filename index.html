@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Andrew Godspower — Course Home</title>
+  <meta name="description" content="Andrew Godspower — course home page for WDD231. Projects, course progress, and contact." />
+  <meta name="author" content="Andrew Godspower" />
+
+  <!-- 1) Normalize (must come BEFORE your own CSS) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <!-- 2) Google font (example) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- 3) Your CSS files -->
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/large.css">
+
+  <!-- Scripts deferred -->
+  <script defer src="scripts/navigation.js"></script>
+  <script defer src="scripts/date.js"></script>
+  <script defer src="scripts/courses.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <!-- Inline SVG logo (keeps accessibility and scales crisply) -->
+      <a href="index.html" class="logo" aria-label="Home">
+        <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="10" fill="#2b6cb0"></circle>
+          <text x="12" y="16" font-size="10" text-anchor="middle" fill="#fff" font-family="Roboto">AG</text>
+        </svg>
+      </a>
+
+      <span class="site-title">Andrew Godspower</span>
+
+      <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation"></button>
+    </div>
+
+    <nav id="nav-bar" class="navigation" role="navigation" aria-label="Primary">
+      <ul>
+        <li class="current"><a href="index.html">Home</a></li>
+        <li><a href="chamber/index.html">Chamber</a></li>
+        <li><a href="final/index.html">Final</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-main" role="main">
+    <h1>Home</h1>
+
+    <section id="courses-section" class="card-section" aria-labelledby="courses-heading">
+      <h2 id="courses-heading">Certificate Courses</h2>
+
+      <div class="controls" aria-hidden="false">
+        <button class="filter-btn" data-filter="all">All Courses</button>
+        <button class="filter-btn" data-filter="WDD">WDD Courses</button>
+        <button class="filter-btn" data-filter="CSE">CSE Courses</button>
+        <div class="credit-summary">Credits: <span id="credit-total">0</span></div>
+      </div>
+
+      <div id="courses-container" class="cards" aria-live="polite"></div>
+    </section>
+
+    <section id="about" class="info-section">
+      <h2>About</h2>
+      <p>Student: <strong>Andrew Godspower</strong> — Lagos, Nigeria. I’m learning web development and building project-based portfolio work.</p>
+    </section>
+
+    <section id="projects" class="info-section">
+      <h2>Projects</h2>
+      <p>Links to course projects and GitHub repos.</p>
+      <ul>
+        <li><a href="https://github.com/godspower2006/wdd231" target="_blank" rel="noopener">GitHub repo</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="social">
+      <a href="https://github.com/godspower2006" target="_blank" rel="noopener" aria-label="GitHub">
+        <!-- small inline svg icon -->
+        <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 4.8c.68 0 1.36.09 2 .26 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+    </div>
+
+    <p>&copy; <span id="currentyear"></span> Andrew Godspower — Lagos, Nigeria</p>
+    <p id="lastModified">Last modified: </p>
+  </footer>
+</body>
+</html>
