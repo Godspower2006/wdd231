@@ -1,0 +1,65 @@
+:root{
+  --bg:#f7f7f7;
+  --card:#ffffff;
+  --accent:#2b6cb0;
+  --text:#1f2937;
+  --muted:#6b7280;
+  font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-size:16px;
+}
+
+.site-header{
+  display:grid;
+  grid-template-columns: auto 44px;
+  gap:1rem;
+  align-items:center;
+  padding:0.75rem 1rem;
+  background:var(--card);
+  border-bottom:1px solid #e5e7eb;
+}
+
+.logo-wrap{
+  display:flex;
+  gap:0.75rem;
+  align-items:center;
+}
+.site-name{ font-weight:700; font-size:1rem; }
+
+.hamburger{
+  background:none;
+  border:0;
+  font-size:1.25rem;
+  width:44px;
+  height:44px;
+}
+.hamburger::before{ content: "\2630"; font-size:1.25rem; }
+
+.navigation{ display:none; padding:0 1rem; }
+.navigation ul{ list-style:none; margin:0; padding:0; display:block; }
+.navigation li a{ display:block; padding:0.5rem 0; text-decoration:none; color:var(--text); }
+
+main{ padding:1rem; max-width:840px; margin:0 auto; }
+
+.card{ background:var(--card); padding:1rem; margin-bottom:1rem; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.04); }
+
+.hero{ display:grid; grid-template-columns: 1fr auto; gap:1rem; align-items:center; }
+.profile-pic img{ width:120px; height:auto; border-radius:8px; object-fit:cover; }
+
+.controls{ display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:0.5rem; }
+.filter-btn{ padding:0.4rem 0.6rem; border-radius:6px; border:1px solid #d1d5db; background:white; cursor:pointer; }
+.filter-btn:hover{ box-shadow:0 0 0 3px rgba(59,130,246,0.08); }
+
+.course-list{ display:grid; gap:0.75rem; }
+
+.course-card{ padding:0.6rem; border-radius:6px; border:1px solid #e6e6e6; display:flex; justify-content:space-between; align-items:center; }
+.course-card.completed{ background: linear-gradient(90deg, rgba(43,108,176,0.06), rgba(43,108,176,0.02)); border-color:var(--accent); }
+
+footer{ padding:1rem; text-align:center; font-size:0.9rem; color:var(--muted); }
+.social{ display:flex; gap:0.5rem; justify-content:center; margin-bottom:0.5rem; }

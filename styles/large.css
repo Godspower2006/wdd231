@@ -1,0 +1,17 @@
+@media (min-width: 700px) {
+  .site-header{
+    grid-template-columns: 24px auto 120px;
+    align-items:center;
+  }
+  .logo{ width:24px; height:auto; }
+  .hamburger{ display:none; } /* hide on larger screens */
+
+  .navigation{ display:block; }
+  .navigation ul{ display:flex; gap:1rem; align-items:center; }
+  .navigation a{ padding:0.5rem 0.75rem; border-radius:6px; }
+  .navigation li.current a{ background:var(--accent); color:white; }
+
+  main{ padding:2rem; }
+  .hero{ grid-template-columns: 1fr 200px; }
+  .profile-pic img{ width:200px; height:auto; }
+}
