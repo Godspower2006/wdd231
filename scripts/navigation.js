@@ -6,8 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!navButton || !navBar) return;
 
   navButton.addEventListener('click', () => {
-    const isShown = navBar.classList.toggle('show'); // used for small screens
+    const isShown = navBar.classList.toggle('show');
     navButton.classList.toggle('show');
     navButton.setAttribute('aria-expanded', isShown ? 'true' : 'false');
+  });
+
+  // Close nav on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navBar.classList.contains('show')) {
+      navBar.classList.remove('show');
+      navButton.classList.remove('show');
+      navButton.setAttribute('aria-expanded', 'false');
+    }
   });
 });

@@ -3,12 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('currentyear');
   const lastEl = document.getElementById('lastModified');
 
-  if (yearEl) {
-    const now = new Date();
-    yearEl.textContent = now.getFullYear();
-  }
-
-  if (lastEl) {
-    lastEl.textContent = 'Last modified: ' + document.lastModified;
-  }
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  if (lastEl) lastEl.textContent = 'Last Modification: ' + document.lastModified;
 });

@@ -1,17 +1,16 @@
-@media (min-width: 700px) {
-  .site-header{
-    grid-template-columns: 24px auto 120px;
-    align-items:center;
-  }
-  .logo{ width:24px; height:auto; }
-  .hamburger{ display:none; } /* hide on larger screens */
+@media (min-width:700px) {
+  .site-header{grid-template-columns: 24px auto 200px;padding:1rem 2rem}
+  .hamburger{display:none}
+  .navigation{display:block}
+  .navigation ul{display:flex;gap:1rem;align-items:center}
+  .navigation a{padding:.5rem 1rem;border-radius:6px}
+  .navigation li.current a{background:var(--accent);color:white}
 
-  .navigation{ display:block; }
-  .navigation ul{ display:flex; gap:1rem; align-items:center; }
-  .navigation a{ padding:0.5rem 0.75rem; border-radius:6px; }
-  .navigation li.current a{ background:var(--accent); color:white; }
-
-  main{ padding:2rem; }
-  .hero{ grid-template-columns: 1fr 200px; }
-  .profile-pic img{ width:200px; height:auto; }
+  main{display:grid;grid-template-columns:2fr 1fr;gap:1rem;padding:2rem}
+  h1{grid-column:1 / -1}
+  .hero{display:grid;grid-template-columns:1fr 300px;gap:1rem;align-items:start}
+  .student-photo{margin:0}
+  .course-list{grid-column:1 / -1;display:flex;flex-direction:column;max-width:100%}
+  .controls{justify-content:flex-start}
+  footer{padding:1.25rem}
 }

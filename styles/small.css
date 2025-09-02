@@ -1,65 +1,55 @@
 :root{
-  --bg:#f7f7f7;
+  --bg:#f6faf6;
   --card:#ffffff;
-  --accent:#2b6cb0;
-  --text:#1f2937;
+  --accent:#222;
   --muted:#6b7280;
-  font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --accent-2:#2b6cb0;
+  font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
 }
 
-html,body{
-  height:100%;
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-size:16px;
-}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:#111;font-size:16px}
 
 .site-header{
   display:grid;
   grid-template-columns: auto 44px;
-  gap:1rem;
   align-items:center;
-  padding:0.75rem 1rem;
+  gap:1rem;
   background:var(--card);
+  padding:.75rem 1rem;
   border-bottom:1px solid #e5e7eb;
 }
 
-.logo-wrap{
-  display:flex;
-  gap:0.75rem;
-  align-items:center;
-}
-.site-name{ font-weight:700; font-size:1rem; }
+.brand{display:flex;align-items:center;gap:.75rem}
+.site-name{font-weight:700}
 
-.hamburger{
-  background:none;
-  border:0;
-  font-size:1.25rem;
-  width:44px;
-  height:44px;
-}
-.hamburger::before{ content: "\2630"; font-size:1.25rem; }
+.hamburger{background:none;border:0;width:44px;height:44px;font-size:1.25rem}
+.hamburger::before{content:"\2630"}
 
-.navigation{ display:none; padding:0 1rem; }
-.navigation ul{ list-style:none; margin:0; padding:0; display:block; }
-.navigation li a{ display:block; padding:0.5rem 0; text-decoration:none; color:var(--text); }
+.navigation{display:none}
+.navigation ul{list-style:none;margin:0;padding:0}
+.navigation a{display:block;padding:.6rem 1rem;text-decoration:none;color:inherit}
 
-main{ padding:1rem; max-width:840px; margin:0 auto; }
+main{max-width:980px;margin:0 auto;padding:1rem}
+h1{font-size:2rem;margin:.75rem 0}
+.card{background:var(--card);padding:1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
 
-.card{ background:var(--card); padding:1rem; margin-bottom:1rem; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.04); }
+.hero{display:block}
+.about h2, .student-photo h2{background:var(--accent);color:#fff;padding:.5rem;margin:0;border-radius:4px}
+.about p{background:#efefef;padding:1rem;margin-top:.5rem;border-radius:4px}
 
-.hero{ display:grid; grid-template-columns: 1fr auto; gap:1rem; align-items:center; }
-.profile-pic img{ width:120px; height:auto; border-radius:8px; object-fit:cover; }
+.student-photo{margin-top:1rem;text-align:center}
+.student-photo img{width:100%;height:auto;max-width:240px;border-radius:6px;display:block;margin:0 auto}
 
-.controls{ display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:0.5rem; }
-.filter-btn{ padding:0.4rem 0.6rem; border-radius:6px; border:1px solid #d1d5db; background:white; cursor:pointer; }
-.filter-btn:hover{ box-shadow:0 0 0 3px rgba(59,130,246,0.08); }
+.controls{display:flex;gap:.5rem;justify-content:center;margin:1rem 0;flex-wrap:wrap}
+.filter-btn{padding:.5rem 1rem;border-radius:8px;border:2px solid #cfcfcf;background:#f2f2f2;cursor:pointer}
+.filter-btn[aria-pressed="true"], .filter-btn.active{background:var(--accent-2);color:white;border-color:var(--accent-2)}
 
-.course-list{ display:grid; gap:0.75rem; }
+.course-list{display:grid;gap:.5rem}
+.course-card{display:flex;justify-content:space-between;align-items:center;padding:.6rem;border-radius:6px;background:#eee;border:1px solid #ddd}
+.course-card.completed{background:linear-gradient(90deg, rgba(43,108,176,0.06), rgba(43,108,176,0.02));border-color:var(--accent-2)}
 
-.course-card{ padding:0.6rem; border-radius:6px; border:1px solid #e6e6e6; display:flex; justify-content:space-between; align-items:center; }
-.course-card.completed{ background: linear-gradient(90deg, rgba(43,108,176,0.06), rgba(43,108,176,0.02)); border-color:var(--accent); }
+.credits{text-align:center;color:var(--muted);margin-top:.75rem}
 
-footer{ padding:1rem; text-align:center; font-size:0.9rem; color:var(--muted); }
-.social{ display:flex; gap:0.5rem; justify-content:center; margin-bottom:0.5rem; }
+footer{padding:1rem;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px solid #e5e7eb}
+.social{display:flex;gap:1rem;justify-content:center;margin-bottom:.5rem}

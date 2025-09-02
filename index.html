@@ -1,38 +1,36 @@
 <!doctype html>
 <html lang="en-US">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UFT-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Andrew Godspower — Course Home</title>
   <meta name="description" content="Andrew Godspower — course home page for WDD231. Projects, course progress, and contact.">
   <meta name="author" content="Andrew Godspower">
 
-  <!-- Normalize first -->
-  <link rel="stylesheet" href="styles/normalize.css">
+  <!-- Normalize (CDN or local) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
   <!-- Google Fonts (preconnect + single link) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- Your CSS files (small then large) -->
+  <!-- Custom CSS: small first, then large which contains the media query -->
   <link rel="stylesheet" href="styles/small.css">
   <link rel="stylesheet" href="styles/large.css">
 
-  <!-- Scripts loaded with defer -->
+  <!-- JS files loaded with defer -->
   <script src="scripts/navigation.js" defer></script>
   <script src="scripts/date.js" defer></script>
   <script src="scripts/course.js" defer></script>
 </head>
 <body>
   <header class="site-header">
-    <div class="logo-wrap">
-      <!-- SVG logo (inline or linked) -->
+    <div class="brand">
       <img src="images/logo.svg" alt="Site logo" class="logo" width="40" height="40">
       <span class="site-name">Andrew Godspower</span>
     </div>
 
-    <!-- accessible hamburger button -->
     <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation"></button>
 
     <nav id="nav-bar" class="navigation" aria-label="Primary">
@@ -48,51 +46,52 @@
   <main>
     <h1>Home</h1>
 
-    <section id="hero" class="card hero">
-      <div class="hero-text">
-        <h2>Welcome</h2>
-        <p>Course home page for WDD231. Projects, progress, and resources.</p>
+    <section class="hero card">
+      <div class="about">
+        <h2>About Me</h2>
+        <p>I am a student from Abia State, Nigeria, learning web development and software engineering. I enjoy music and conversation and I'm excited about building web projects.</p>
       </div>
-      <!-- responsive picture for your profile -->
-      <picture class="profile-pic">
-        <!-- provide modern format first -->
-        <source srcset="images/profile.webp" type="image/webp">
-        <img src="images/profile.jpg" alt="Portrait of Andrew Godspower" width="200" height="200" loading="lazy">
-      </picture>
+
+      <aside class="student-photo card" aria-label="Student photo">
+        <h2>Student Photo</h2>
+        <picture>
+          <source srcset="images/profile.webp" type="image/webp">
+          <img src="images/profile.jpg" alt="Portrait of Andrew Godspower" width="200" height="200" loading="lazy">
+        </picture>
+      </aside>
     </section>
 
     <section id="courses" class="card">
-      <h2>Course Certificate — Web & Computer Programming</h2>
+      <h2>Web Certificate Courses</h2>
 
       <div class="controls">
-        <button id="filter-all" class="filter-btn">All Courses</button>
-        <button id="filter-wdd" class="filter-btn">WDD Courses</button>
-        <button id="filter-cse" class="filter-btn">CSE Courses</button>
-        <p class="credits">Total credits displayed: <span id="creditsTotal">0</span></p>
+        <button id="filter-all" class="filter-btn" aria-pressed="true">All</button>
+        <button id="filter-wdd" class="filter-btn">WDD</button>
+        <button id="filter-cse" class="filter-btn">CSE</button>
       </div>
 
       <div id="course-list" class="course-list" aria-live="polite"></div>
+
+      <p class="credits">The total credits for courses listed above is <span id="creditsTotal">0</span></p>
     </section>
 
-    <section id="about" class="card">
-      <h2>About</h2>
-      <p>I'm a student from Abia State, Nigeria, learning web development and software engineering.</p>
+    <section class="card resources">
+      <h2>Resources</h2>
+      <p>Links to important projects and resources go here.</p>
     </section>
   </main>
 
   <footer>
     <div class="social">
-      <a href="https://github.com/yourusername" aria-label="GitHub (opens in new tab)" target="_blank" rel="noopener noreferrer">
-        <img src="images/github.svg" alt="GitHub icon" width="24" height="24">
+      <a href="https://github.com/Godspower2006" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <img src="images/github.svg" alt="GitHub icon" width="32" height="32">
       </a>
-      <a href="https://www.linkedin.com/in/yourprofile" aria-label="LinkedIn (opens in new tab)" target="_blank" rel="noopener noreferrer">
-        <img src="images/linkedin.svg" alt="LinkedIn icon" width="24" height="24">
+      <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <img src="images/linkedin.svg" alt="LinkedIn icon" width="32" height="32">
       </a>
     </div>
 
-    <p>
-      © <span id="currentyear"></span> Andrew Godspower — Lagos, Nigeria
-    </p>
+    <p>© <span id="currentyear"></span> Andrew Godspower — Lagos, Nigeria</p>
     <p id="lastModified">Last modified: </p>
   </footer>
 </body>
