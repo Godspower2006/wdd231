@@ -1,4 +1,4 @@
-// scripts/navigation.js
+
 document.addEventListener('DOMContentLoaded', () => {
   const navButton = document.getElementById('nav-button');
   const navBar = document.getElementById('nav-bar');
