@@ -1,58 +1,62 @@
-// scripts/course.js
-const courses = [
-  { id:1, code: 'WDD130', title: 'Introduction to Web Development', credits: 3, category: 'WDD', completed: true },
-  { id:2, code: 'WDD131', title: 'Responsive Design', credits: 3, category: 'WDD', completed: true },
-  { id:3, code: 'WDD231', title: 'Advanced Topics', credits: 3, category: 'WDD', completed: false },
-  { id:4, code: 'CSE101', title: 'Intro to Programming', credits: 4, category: 'CSE', completed: true },
-  { id:5, code: 'CSE120', title: 'Data Structures', credits: 4, category: 'CSE', completed: false }
-];
-
+// scripts/courses.js
 document.addEventListener('DOMContentLoaded', () => {
-  const listEl = document.getElementById('course-list');
-  const creditsEl = document.getElementById('creditsTotal');
-  const btnAll = document.getElementById('filter-all');
-  const btnWdd = document.getElementById('filter-wdd');
-  const btnCse = document.getElementById('filter-cse');
+  const courses = [
+    { code: "WDD130", title: "Introduction to Web Development", credits: 3, category: "WDD", completed: true },
+    { code: "WDD131", title: "Responsive Design", credits: 3, category: "WDD", completed: true },
+    { code: "WDD231", title: "Intermediate Web Foundations", credits: 3, category: "WDD", completed: false },
+    { code: "CSE110", title: "Intro to Computer Science", credits: 4, category: "CSE", completed: true },
+    { code: "CSE120", title: "Programming Fundamentals", credits: 3, category: "CSE", completed: false }
+  ];
+
+  const container = document.getElementById('courses-container');
+  const creditTotalEl = document.getElementById('credit-total');
   const filterButtons = document.querySelectorAll('.filter-btn');
 
-  function renderCourseCards(arr) {
-    listEl.innerHTML = '';
-    arr.forEach(course => {
-      const card = document.createElement('div');
-      card.className = 'course-card' + (course.completed ? ' completed' : '');
-      card.innerHTML = `
-        <div>
-          <strong>${course.code}</strong> — ${course.title}
-        </div>
-        <div>${course.credits} cr</div>
-      `;
-      listEl.appendChild(card);
-    });
-    const total = arr.reduce((s,c) => s + Number(c.credits || 0), 0);
-    creditsEl.textContent = total;
+  function render(list) {
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (list.length === 0) {
+      container.innerHTML = '<p>No courses found.</p>';
+    } else {
+      list.forEach(course => {
+        const card = document.createElement('article');
+        card.className = 'course-card' + (course.completed ? ' completed' : '');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `${course.code} — ${course.title}; ${course.credits} credits; ${course.completed ? 'completed' : 'in progress'}`);
+        card.innerHTML = `
+          <h3>${course.code} — ${course.title}</h3>
+          <p>Category: ${course.category} • Credits: ${course.credits}</p>
+          <p>Status: <strong>${course.completed ? 'Completed' : 'In progress'}</strong></p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // update credits (reduce)
+    const totalCredits = list.reduce((sum, c) => sum + (c.credits || 0), 0);
+    if (creditTotalEl) creditTotalEl.textContent = totalCredits;
   }
 
-  // initial
-  renderCourseCards(courses);
+  // initial render
+  render(courses);
 
-  // helper to toggle active button aria-pressed
-  function setActiveButton(activeBtn) {
-    filterButtons.forEach(b => {
-      b.classList.toggle('active', b === activeBtn);
-      b.setAttribute('aria-pressed', b === activeBtn ? 'true' : 'false');
+  // filtering
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = btn.getAttribute('data-filter') || 'all';
+      const out = f === 'all' ? courses : courses.filter(c => c.category === f);
+
+      render(out);
+
+      filterButtons.forEach(b => {
+        const isActive = b === btn;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      // move focus to course list (wayfinding)
+      container.focus && container.focus();
     });
-  }
-
-  btnAll.addEventListener('click', () => {
-    renderCourseCards(courses);
-    setActiveButton(btnAll);
-  });
-  btnWdd.addEventListener('click', () => {
-    renderCourseCards(courses.filter(c => c.category === 'WDD'));
-    setActiveButton(btnWdd);
-  });
-  btnCse.addEventListener('click', () => {
-    renderCourseCards(courses.filter(c => c.category === 'CSE'));
-    setActiveButton(btnCse);
   });
 });

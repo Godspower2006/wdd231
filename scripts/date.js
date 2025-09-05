@@ -4,5 +4,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const lastEl = document.getElementById('lastModified');
 
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-  if (lastEl) lastEl.textContent = 'Last Modification: ' + document.lastModified;
+  if (lastEl) lastEl.textContent = 'Last modified: ' + document.lastModified;
 });

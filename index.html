@@ -2,12 +2,12 @@
 <html lang="en-US">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Andrew Godspower — Course Home</title>
-  <meta name="description" content="Andrew Godspower — course home page for WDD231. Projects, course progress, and contact.">
+  <meta name="description" content="Andrew Godspower — course home page for WDD231. Projects, course progress, and contact." />
   <meta name="author" content="Andrew Godspower">
 
-  <!-- Normalize (CDN or local) -->
+  <!-- Normalize (before your CSS) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
   <!-- Google Fonts (preconnect + single link) -->
@@ -15,83 +15,94 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- Custom CSS: small first, then large which contains the media query -->
+  <!-- Your CSS -->
   <link rel="stylesheet" href="styles/small.css">
   <link rel="stylesheet" href="styles/large.css">
 
-  <!-- JS files loaded with defer -->
-  <script src="scripts/navigation.js" defer></script>
-  <script src="scripts/date.js" defer></script>
-  <script src="scripts/course.js" defer></script>
+  <!-- JS (defer) -->
+  <script defer src="scripts/navigation.js"></script>
+  <script defer src="scripts/date.js"></script>
+  <script defer src="scripts/courses.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">
-      <img src="images/logo.svg" alt="Site logo" class="logo" width="40" height="40">
-      <span class="site-name">Andrew Godspower</span>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Home">
+        <!-- you can replace this with images/logo.svg if you prefer -->
+        <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="10" fill="#2b6cb0"></circle>
+          <text x="12" y="16" font-size="10" text-anchor="middle" fill="#fff" font-family="Roboto">AG</text>
+        </svg>
+      </a>
+
+      <span class="site-title">Andrew Godspower</span>
+
+      <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation"></button>
     </div>
 
-    <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation"></button>
-
-    <nav id="nav-bar" class="navigation" aria-label="Primary">
+    <nav id="nav-bar" class="navigation" role="navigation" aria-label="Primary">
       <ul>
         <li class="current"><a href="index.html">Home</a></li>
-        <li><a href="chamber.html">Chamber</a></li>
-        <li><a href="final.html">Final</a></li>
+        <li><a href="chamber/index.html">Chamber</a></li>
+        <li><a href="final/index.html">Final</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main id="main" class="page-main" role="main">
     <h1>Home</h1>
 
-    <section class="hero card">
+    <section id="hero" class="card hero" aria-labelledby="about-heading">
       <div class="about">
-        <h2>About Me</h2>
-        <p>I am a student from Abia State, Nigeria, learning web development and software engineering. I enjoy music and conversation and I'm excited about building web projects.</p>
+        <h2 id="about-heading">About Me</h2>
+        <p>I am a student from Abia State, Nigeria learning web development. I enjoy music and conversation and am building portfolio projects for this course.</p>
       </div>
 
       <aside class="student-photo card" aria-label="Student photo">
         <h2>Student Photo</h2>
         <picture>
           <source srcset="images/profile.webp" type="image/webp">
-          <img src="images/profile.jpg" alt="Portrait of Andrew Godspower" width="200" height="200" loading="lazy">
+          <img src="images/profile.jpg" alt="Portrait of Andrew Godspower" width="240" height="240" loading="lazy">
         </picture>
       </aside>
     </section>
 
-    <section id="courses" class="card">
-      <h2>Web Certificate Courses</h2>
+    <section id="courses-section" class="card-section" aria-labelledby="courses-heading">
+      <h2 id="courses-heading">Web Certificate Courses</h2>
 
-      <div class="controls">
-        <button id="filter-all" class="filter-btn" aria-pressed="true">All</button>
-        <button id="filter-wdd" class="filter-btn">WDD</button>
-        <button id="filter-cse" class="filter-btn">CSE</button>
+      <div class="controls" role="group" aria-label="Filter courses">
+        <button class="filter-btn" data-filter="all" aria-pressed="true">All Courses</button>
+        <button class="filter-btn" data-filter="WDD" aria-pressed="false">WDD Courses</button>
+        <button class="filter-btn" data-filter="CSE" aria-pressed="false">CSE Courses</button>
+        <div class="credit-summary" aria-live="polite">Credits: <span id="credit-total">0</span></div>
       </div>
 
-      <div id="course-list" class="course-list" aria-live="polite"></div>
-
-      <p class="credits">The total credits for courses listed above is <span id="creditsTotal">0</span></p>
+      <div id="courses-container" class="cards" aria-live="polite" tabindex="-1"></div>
     </section>
 
-    <section class="card resources">
-      <h2>Resources</h2>
-      <p>Links to important projects and resources go here.</p>
+    <section id="projects" class="info-section">
+      <h2>Projects</h2>
+      <p>Links to course projects and GitHub repos.</p>
+      <ul>
+        <li><a href="https://github.com/godspower2006/wdd231" target="_blank" rel="noopener">GitHub repo</a></li>
+      </ul>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer" role="contentinfo">
     <div class="social">
-      <a href="https://github.com/Godspower2006" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <img src="images/github.svg" alt="GitHub icon" width="32" height="32">
+      <a href="https://github.com/godspower2006" target="_blank" rel="noopener" aria-label="GitHub">
+        <img src="images/github.svg" alt="GitHub icon" width="28" height="28">
       </a>
-      <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <img src="images/linkedin.svg" alt="LinkedIn icon" width="32" height="32">
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <img src="images/linkedin.svg" alt="LinkedIn icon" width="28" height="28">
       </a>
     </div>
 
-    <p>© <span id="currentyear"></span> Andrew Godspower — Lagos, Nigeria</p>
+    <p>&copy; <span id="currentyear"></span> Andrew Godspower — Lagos, Nigeria</p>
     <p id="lastModified">Last modified: </p>
   </footer>
 </body>
