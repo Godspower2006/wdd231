@@ -1,9 +1,10 @@
-
+// scripts/navigation.js
 document.addEventListener('DOMContentLoaded', () => {
   const navButton = document.getElementById('nav-button');
   const navBar = document.getElementById('nav-bar');
   const navLinks = navBar ? navBar.querySelectorAll('a') : [];
 
+  // Toggle mobile nav
   if (navButton && navBar) {
     navButton.addEventListener('click', () => {
       const shown = navBar.classList.toggle('show');
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navButton.classList.toggle('show', shown);
     });
 
+    // Close nav on ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navBar.classList.contains('show')) {
         navBar.classList.remove('show');
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Wayfinding helpers
   function clearCurrent() {
     navLinks.forEach(a => {
       a.parentElement.classList.remove('current');
@@ -28,8 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // On click: mark current and close mobile nav
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      // If link is external (target="_blank"), still mark nearest logical nav item
       clearCurrent();
       link.parentElement.classList.add('current');
       link.setAttribute('aria-current', 'page');
@@ -42,9 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // On load: mark the nav item that matches the current file name
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   navLinks.forEach(link => {
-    const hrefFile = link.getAttribute('href')?.split('/').pop();
+    const href = link.getAttribute('href') || '';
+    const hrefFile = href.split('/').pop();
+    // Match index.html also for root
     if (hrefFile === currentPath || (hrefFile === 'index.html' && currentPath === '')) {
       clearCurrent();
       link.parentElement.classList.add('current');

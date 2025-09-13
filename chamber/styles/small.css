@@ -1,0 +1,56 @@
+/* small.css - mobile first */
+:root{
+  --bg:#f6fbfa;
+  --card:#ffffff;
+  --accent:#222;
+  --gold:#d4af37;
+  --silver:#c0c0c0;
+  --member:#e6f1ff;
+  --muted:#6b7280;
+  font-family: system-ui, "Roboto", Arial, sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:#111}
+a{color:inherit}
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
+
+.site-header{display:flex;align-items:center;gap:.75rem;padding:.75rem;background:var(--card);border-bottom:1px solid #e5e7eb}
+.header-inner{display:flex;align-items:center;gap:.75rem;width:100%}
+.site-title{font-weight:700;font-size:1rem}
+.hamburger{margin-left:auto;border:0;background:none;font-size:1.6rem}
+
+.navigation{display:none}
+.navigation.show{display:block;padding:.5rem}
+.navigation ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.25rem}
+.navigation a{display:block;padding:.5rem;border-radius:6px}
+
+.page-main{max-width:980px;margin:0 auto;padding:1rem}
+h1{font-size:1.6rem;margin:0 0 .75rem}
+.controls{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem}
+.view-btn{padding:.4rem .7rem;border-radius:8px;border:2px solid #d1d5db;background:#fff;cursor:pointer}
+.view-btn[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.filters select, .search-wrap input{padding:.4rem .6rem;border-radius:6px;border:1px solid #d1d5db}
+
+.directory{display:grid;gap:1rem;grid-template-columns:1fr}
+
+/* grid view cards */
+.grid-view .member-card{display:grid;grid-template-columns:1fr;gap:.5rem;background:var(--card);padding:.75rem;border-radius:8px;border:1px solid #e6e6e6;align-items:start}
+.card-media img{width:100%;height:auto;border-radius:6px}
+.member-name{margin:.25rem 0;font-size:1.05rem}
+.member-meta{margin:.15rem 0;color:var(--muted);font-size:.95rem}
+.member-category{font-weight:600;margin-top:.35rem}
+
+/* membership visual flavors */
+.level-3{border-left:6px solid var(--gold)}
+.level-2{border-left:6px solid var(--silver)}
+.level-1{border-left:6px solid var(--member)}
+
+/* list view: images hidden, single column text layout */
+.list-view .member-card{display:flex;flex-direction:column;gap:.25rem}
+.list-view .card-media{display:none}
+.list-view .member-card{padding:.6rem}
+
+/* footer */
+.site-footer{padding:1rem;background:var(--card);border-top:1px solid #e5e7eb;text-align:center;color:var(--muted);font-size:.9rem;margin-top:1rem}

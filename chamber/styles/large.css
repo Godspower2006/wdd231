@@ -1,0 +1,12 @@
+/* large.css */
+@media (min-width:700px) {
+  .navigation{display:block}
+  .navigation ul{flex-direction:row;gap:1rem}
+  .page-main{display:grid;grid-template-columns:2fr 1fr;gap:1rem;padding:1.5rem}
+  h1{grid-column:1 / -1}
+
+  /* directory grid: multi-column */
+  .grid-view.directory{grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));}
+  .grid-view .member-card{grid-template-columns:1fr;display:grid;gap:.6rem}
+  .directory.grid-view{align-items:start}
+}

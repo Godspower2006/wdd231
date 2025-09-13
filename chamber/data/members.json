@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Sahara Books",
+    "address": "12 Market Road, Andrew's Chamber",
+    "phone": "(223) 555-0101",
+    "website": "https://saharabooks.example",
+    "image": "company1.jpg",
+    "level": 2,
+    "category": "Retail",
+    "notes": "Local bookstore & cafe"
+  },
+  {
+    "name": "Desert IT",
+    "address": "5 Tech Lane, Andrew's Chamber",
+    "phone": "(223) 555-0102",
+    "website": "https://desertit.example",
+    "image": "company2.jpg",
+    "level": 3,
+    "category": "Services",
+    "notes": "IT services and web design"
+  },
+  {
+    "name": "Nile Grocers",
+    "address": "44 Commerce Blvd, Andrew's Chamber",
+    "phone": "(223) 555-0103",
+    "website": "https://nilegrocery.example",
+    "image": "company3.jpg",
+    "level": 1,
+    "category": "Food",
+    "notes": "Groceries and fresh produce"
+  },
+  {
+    "name": "Oasis Hotel",
+    "address": "1 River Street, Andrew's Chamber",
+    "phone": "(223) 555-0104",
+    "website": "https://oasishotel.example",
+    "image": "company4.jpg",
+    "level": 3,
+    "category": "Hospitality",
+    "notes": "Hotel and events"
+  },
+  {
+    "name": "Camel Courier",
+    "address": "9 Logistics Way, Andrew's Chamber",
+    "phone": "(223) 555-0105",
+    "website": "https://camelcourier.example",
+    "image": "company5.jpg",
+    "level": 1,
+    "category": "Logistics",
+    "notes": "Local deliveries"
+  },
+  {
+    "name": "Sunrise Tailors",
+    "address": "77 Artisan Ave, Andrew's Chamber",
+    "phone": "(223) 555-0106",
+    "website": "https://sunrisetailors.example",
+    "image": "company6.jpg",
+    "level": 2,
+    "category": "Services",
+    "notes": "Tailoring & repairs"
+  },
+  {
+    "name": "Blue Dune Clinic",
+    "address": "3 Health Plaza, Andrew's Chamber",
+    "phone": "(223) 555-0107",
+    "website": "https://blueduneclinic.example",
+    "image": "company7.jpg",
+    "level": 2,
+    "category": "Health",
+    "notes": "Medical clinic and pharmacy"
+  }
+]

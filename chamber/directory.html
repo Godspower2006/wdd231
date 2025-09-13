@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Andrew's Chamber — Directory</title>
+  <meta name="description" content="Directory of member businesses for Andrew's Chamber of Commerce. Find local businesses, contact info, membership levels and more." />
+  <meta name="author" content="Andrew Godspower">
+
+  <!-- Favicon (place favicon.ico in /chamber) -->
+  <link rel="icon" href="favicon.ico">
+
+  <!-- Open Graph (Facebook / LinkedIn previews) -->
+  <meta property="og:title" content="Andrew's Chamber — Directory">
+  <meta property="og:description" content="Explore members of Andrew's Chamber of Commerce — businesses, contact info, membership levels and links.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://godspower2006.github.io/wdd231/chamber/directory.html">
+  <meta property="og:image" content="https://godspower2006.github.io/wdd231/chamber/images/chamber-social.jpg">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Andrew's Chamber — Directory">
+  <meta name="twitter:description" content="Explore members of Andrew's Chamber of Commerce — businesses, contact info, membership levels and links.">
+  <meta name="twitter:image" content="https://godspower2006.github.io/wdd231/chamber/images/chamber-social.jpg">
+
+  <!-- Normalize -->
+  <link rel="stylesheet" href="../styles/normalize.min.css">
+
+  <!-- Your CSS files -->
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/large.css">
+
+  <!-- Scripts -->
+  <script defer src="scripts/directory.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="../index.html" class="logo" aria-label="Andrew's Chamber Home">
+        <img src="images/logo-48.png" alt="Andrew's Chamber logo" width="48" height="48">
+      </a>
+      <span class="site-title">Andrew's Chamber of Commerce</span>
+
+      <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">
+        ☰
+      </button>
+    </div>
+
+    <nav id="nav-bar" class="navigation" role="navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="../discover.html">Discover</a></li>
+        <li><a href="../join.html">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-main" role="main">
+    <h1>Directory</h1>
+
+    <section class="controls" aria-label="Display and filter controls">
+      <div class="view-toggle" role="toolbar" aria-label="Toggle result view">
+        <button id="gridView" class="view-btn" aria-pressed="true">Grid</button>
+        <button id="listView" class="view-btn" aria-pressed="false">List</button>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter membership">
+        <label for="levelFilter">Membership:</label>
+        <select id="levelFilter">
+          <option value="all">All</option>
+          <option value="1">Member</option>
+          <option value="2">Silver</option>
+          <option value="3">Gold</option>
+        </select>
+      </div>
+
+      <div class="search-wrap">
+        <label for="searchInput" class="visually-hidden">Search members</label>
+        <input id="searchInput" type="search" placeholder="Search businesses..." aria-label="Search members">
+      </div>
+    </section>
+
+    <section id="directory" class="directory" aria-live="polite" aria-busy="false">
+      <!-- cards injected here by directory.js -->
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="contact">
+      <p>Andrew's Chamber of Commerce — 10 Rue de La Paix, Andrew's Chamber</p>
+      <p>Email: info@andrewschamber.org • Phone: (223) 555-2300</p>
+    </div>
+
+    <p>&copy; <span id="currentyear"></span> Andrew's Chamber — Andrew Godspower — WDD231</p>
+    <p id="lastModified">Last modified: </p>
+  </footer>
+</body>
+</html>
