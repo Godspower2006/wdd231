@@ -1,0 +1,97 @@
+/* home.css - page-specific styling */
+
+/* variables - will inherit global root if present */
+:root {
+  --accent-2: #2b6cb0;
+  --muted: #4b5563;
+  --card-radius: 10px;
+  --focus: #ffbf47;
+}
+
+/* HERO: media and overlay CTA */
+.hero {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding: 0.75rem;
+}
+
+.hero-media {
+  position: relative;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+}
+
+.hero-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* CTA overlay sits on top of the image - accessible and keyboard focusable */
+.hero-cta {
+  position: absolute;
+  left: 50%;
+  bottom: 14%;
+  transform: translateX(-50%);
+  background: var(--accent-2);
+  color: #fff;
+  padding: 0.7rem 1.1rem;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(43,108,176,0.18);
+}
+.hero-cta:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+/* hero text */
+.hero-text { padding: 0 0.25rem; }
+.hero-text .lede { color: var(--muted); margin-top: .4rem; }
+
+/* main grid - mobile-first */
+.home-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin: 1rem 0;
+}
+
+/* card basics */
+.card { background: var(--card, #fff); border-radius: 8px; padding: .85rem; border: 1px solid #e6e6e6; }
+.sm-link { color: var(--accent-2); text-decoration: underline; }
+
+/* weather */
+.weather-current { display:flex; gap:.5rem; align-items:center; }
+#weather-icon { display:block; }
+
+/* spotlights */
+.spotlight-list { display: grid; gap: .75rem; grid-template-columns: 1fr; margin-top:.5rem; }
+.spotlight {
+  display:flex;
+  gap:.75rem;
+  align-items:center;
+  padding:.6rem;
+  border-radius:8px;
+  background:#fff;
+  border:1px solid #e6e6e6;
+}
+.spotlight img { width:72px; height:72px; object-fit:cover; border-radius:8px; }
+
+/* forecasts */
+.forecast-list { list-style:none; padding:0; margin:.5rem 0 0 0; }
+.forecast-list li { margin: .4rem 0; font-size:.95rem; color:var(--muted); }
+
+/* responsive layout for larger screens */
+@media (min-width: 800px) {
+  .hero { grid-template-columns: 1fr 480px; align-items:center; gap:1.25rem; padding: 1rem; }
+  .home-grid { grid-template-columns: 1fr 320px; gap: 1.25rem; align-items:start; }
+  .spotlight-list { grid-template-columns: 1fr 1fr; }
+  .events { order: 1; }
+  .spotlights { order: 2; }
+  .weather { order: 3; position: sticky; top: 1rem; }
+}

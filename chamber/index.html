@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Andrew's Chamber — Home</title>
+  <meta name="description" content="Andrew's Chamber of Commerce — events, member spotlights, weather, and ways to join." />
+  <meta name="author" content="Andrew Godspower">
+
+  <!-- favicon (put images/favicon.ico) -->
+  <link rel="icon" href="images/favicon.ico">
+
+  <!-- Open Graph / Twitter/X social preview -->
+  <meta property="og:title" content="Andrew's Chamber — Home" />
+  <meta property="og:description" content="Discover local business spotlights, events, and resources at Andrew's Chamber of Commerce." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://godspower2006.github.io/wdd231/chamber/index.html" />
+  <meta property="og:image" content="https://godspower2006.github.io/wdd231/chamber/images/chamber-social.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Andrew's Chamber — Home" />
+  <meta name="twitter:description" content="Discover local business spotlights, events, and resources at Andrew's Chamber of Commerce." />
+  <meta name="twitter:image" content="https://godspower2006.github.io/wdd231/chamber/images/chamber-social.jpg" />
+
+  <!-- normalize + Google font -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- your global small.css & large.css should still load -->
+  <link rel="stylesheet" href="../styles/small.css" />
+  <link rel="stylesheet" href="../styles/large.css" />
+
+  <!-- page-specific CSS -->
+  <link rel="stylesheet" href="styles/home.css" />
+
+  <!-- navigation & page scripts (defer) -->
+  <script defer src="scripts/navigation.js"></script>
+  <script defer src="scripts/home.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Andrew's Chamber Home">
+        <!-- inline fallback SVG logo (keeps site valid even if image missing) -->
+        <svg width="48" height="48" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <rect width="100" height="100" rx="12" fill="#2b6cb0"></rect>
+          <text x="50" y="62" font-size="48" text-anchor="middle" fill="#fff" font-family="Roboto, Arial">A</text>
+        </svg>
+      </a>
+
+      <span class="site-title">Andrew's Chamber of Commerce</span>
+
+      <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">
+        ☰
+      </button>
+    </div>
+
+    <nav id="nav-bar" class="navigation" role="navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-main" role="main">
+    <!-- HERO (CTA overlays the hero image) -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-media">
+        <img src="images/hero.jpg" alt="Town center with shops and people" width="1200" height="630" loading="lazy">
+        <!-- CTA overlay positioned over the image (accessible focusable link) -->
+        <a href="join.html" class="hero-cta" id="join-cta">Join the Chamber</a>
+      </div>
+
+      <div class="hero-text">
+        <h1 id="hero-heading">Supporting local business in Andrew's Chamber</h1>
+        <p class="lede">We connect entrepreneurs, host events, and promote local growth — find members, events, and ways to get involved.</p>
+      </div>
+    </section>
+
+    <!-- Main grid: events, weather, spotlights -->
+    <section class="home-grid">
+
+      <!-- Events -->
+      <article class="card events" aria-labelledby="events-heading">
+        <h2 id="events-heading">Upcoming Events</h2>
+        <ul>
+          <li><strong>Business Mixer</strong> — Thu, Sep 26 — 6:00pm — Chamber Hall</li>
+          <li><strong>Small Biz Workshop</strong> — Mon, Oct 7 — 10:00am — Online</li>
+          <li><strong>Holiday Market</strong> — Sat, Dec 6 — 9:00am — Riverside Park</li>
+        </ul>
+        <p><a class="sm-link" href="events.html">See all events</a></p>
+      </article>
+
+      <!-- Weather (dynamically filled) -->
+      <aside class="card weather" aria-labelledby="weather-heading" aria-live="polite">
+        <h2 id="weather-heading">Current Weather</h2>
+        <div id="weather-current" class="weather-current">
+          <p><span id="current-temp">--</span> &deg;C — <span id="current-desc">--</span></p>
+          <img id="weather-icon" src="" alt="" width="80" height="80" style="display:none;">
+        </div>
+
+        <h3>3-Day Forecast</h3>
+        <ul id="forecast-list" class="forecast-list" aria-live="polite">
+          <!-- forecast items injected by JS -->
+        </ul>
+      </aside>
+
+      <!-- Spotlights (random 2–3 gold/silver) -->
+      <section class="card spotlights" aria-labelledby="spotlights-heading">
+        <h2 id="spotlights-heading">Member Spotlights</h2>
+        <div id="spotlight-list" class="spotlight-list" aria-live="polite">
+          <!-- JS will inject 2–3 spotlights here (gold/silver members only) -->
+        </div>
+        <p><a class="sm-link" href="directory.html">See all members</a></p>
+      </section>
+
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="contact">
+      <p>Andrew's Chamber of Commerce — 10 Rue de La Paix, Andrew's Chamber</p>
+      <p>Email: godspowerandrew886@gmail.com • Phone: (+234) 708 852 0985</p>
+    </div>
+
+    <p>&copy; <span id="currentyear"></span> Andrew's Chamber — Andrew Godspower — WDD231</p>
+    <p id="lastModified">Last modified: </p>
+  </footer>
+</body>
+</html>
