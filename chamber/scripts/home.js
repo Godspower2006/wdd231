@@ -13,12 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (lastEl) lastEl.textContent = document.lastModified || 'Not available';
 
   /* ---------- WEATHER SETTINGS ----------
-     Replace the API key below with your OpenWeatherMap API key.
-     Set LAT/LON for your chamber location if you want a different location.
+     Using your API key and Lagos coordinates
   */
-  const OPENWEATHER_API_KEY = '96dd8607d22b7d21d2a2f28da81a68be'; // <<--- replace this
-  const LAT = 6.45;  // example: Lagos latitude (change as desired)
-  const LON = 3.40;  // example: Lagos longitude (change as desired)
+  const OPENWEATHER_API_KEY = '96dd8607d22b7d21d2a2f28da81a68be';
+  const LAT = 6.45;   // Lagos latitude (approx)
+  const LON = 3.40;   // Lagos longitude (approx)
 
   const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${LAT}&lon=${LON}&exclude=minutely,hourly,alerts&units=metric&appid=${OPENWEATHER_API_KEY}`;
 
@@ -103,15 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // run weather only if API key present
-  if (OPENWEATHER_API_KEY && OPENWEATHER_API_KEY !== '96dd8607d22b7d21d2a2f28da81a68be') {
-    loadWeather();
-  } else {
-    console.warn('OpenWeather API key not configured in scripts/home.js. Weather disabled until key is set.');
-    currentTempEl.textContent = '--';
-    currentDescEl.textContent = 'API key required';
-    forecastListEl.innerHTML = '<li>Configure OpenWeather API key in scripts/home.js</li>';
-  }
-
+  // Run both
+  loadWeather();
   loadSpotlights();
 });

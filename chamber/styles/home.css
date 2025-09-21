@@ -1,6 +1,5 @@
 /* home.css - page-specific styling */
 
-/* variables - will inherit global root if present */
 :root {
   --accent-2: #2b6cb0;
   --muted: #4b5563;
@@ -8,7 +7,7 @@
   --focus: #ffbf47;
 }
 
-/* HERO: media and overlay CTA */
+/* HERO */
 .hero {
   display: grid;
   gap: 1rem;
@@ -30,7 +29,6 @@
   display: block;
 }
 
-/* CTA overlay sits on top of the image - accessible and keyboard focusable */
 .hero-cta {
   position: absolute;
   left: 50%;
