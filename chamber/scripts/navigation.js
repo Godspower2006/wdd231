@@ -7,7 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     navButton.addEventListener('click', () => {
       const shown = navBar.classList.toggle('show');
       navButton.setAttribute('aria-expanded', shown ? 'true' : 'false');
+      if (shown) {
+        // move focus into the first nav link for keyboard users
+        const first = navBar.querySelector('a');
+        if (first) first.focus();
+      }
     });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navBar.classList.contains('show')) {
         navBar.classList.remove('show');
@@ -18,13 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function clearCurrent() {
-    navLinks.forEach(a => a.parentElement.classList.remove('current'));
+    navLinks.forEach(a => {
+      const li = a.closest('li');
+      if (li) li.classList.remove('current');
+      a.removeAttribute('aria-current');
+    });
   }
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       clearCurrent();
-      link.parentElement.classList.add('current');
+      const li = link.closest('li');
+      if (li) li.classList.add('current');
       link.setAttribute('aria-current', 'page');
       if (navBar && navBar.classList.contains('show')) {
         navBar.classList.remove('show');
@@ -33,12 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // set current based on URL filename
   const currentPath = window.location.pathname.split('/').pop() || 'directory.html';
   navLinks.forEach(link => {
     const hrefFile = link.getAttribute('href')?.split('/').pop();
     if (hrefFile === currentPath) {
       clearCurrent();
-      link.parentElement.classList.add('current');
+      const li = link.closest('li');
+      if (li) li.classList.add('current');
       link.setAttribute('aria-current', 'page');
     }
   });

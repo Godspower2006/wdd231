@@ -1,54 +1,90 @@
+/* small.css - mobile first (updated for wayfinding & view toggle) */
 :root{
-  --bg:#eef6f8; /* changed background to a slightly cooler tone */
+  --bg:#eef6f8;
   --card:#ffffff;
   --accent:#222;
+  --accent-2:#2b6cb0;
   --gold:#d4af37;
   --silver:#c0c0c0;
   --member:#e6f1ff;
   --muted:#4b5563;
+  --focus: #ffbf47;
   font-family: system-ui, "Roboto", Arial, sans-serif;
 }
+
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:#111}
 a{color:inherit}
+img{max-width:100%;height:auto;display:block} /* prevent horizontal scroll */
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
 
 .site-header{display:flex;align-items:center;gap:.75rem;padding:.75rem;background:var(--card);border-bottom:1px solid #e5e7eb}
 .header-inner{display:flex;align-items:center;gap:.75rem;width:100%}
 .site-title{font-weight:700;font-size:1rem}
-.hamburger{margin-left:auto;border:0;background:none;font-size:1.6rem}
+.hamburger{margin-left:auto;border:0;background:none;font-size:1.6rem;cursor:pointer}
+.hamburger:focus{outline:3px solid var(--focus);border-radius:6px}
 
+/* navigation hidden by default on mobile; will show on toggle */
 .navigation{display:none}
 .navigation.show{display:block;padding:.5rem}
 .navigation ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.25rem}
-.navigation a{display:block;padding:.5rem;border-radius:6px}
+.navigation a{display:block;padding:.5rem;border-radius:6px;text-decoration:none;color:var(--accent)}
+/* WAYFINDING: visible current page */
+.navigation li.current a,
+.navigation a[aria-current="page"]{
+  background:var(--accent-2);
+  color:#fff;
+  padding:.45rem .7rem;
+  border-radius:6px;
+  font-weight:700;
+}
+.navigation a:focus{outline:3px solid var(--focus);border-radius:6px}
 
+/* page layout */
 .page-main{max-width:980px;margin:0 auto;padding:1rem}
 h1{font-size:1.6rem;margin:0 0 .75rem}
+
+/* controls */
 .controls{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem}
 .view-btn{padding:.4rem .7rem;border-radius:8px;border:2px solid #d1d5db;background:#fff;cursor:pointer}
-.view-btn[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.view-btn[aria-pressed="true"], .view-btn.active{background:var(--accent-2);color:#fff;border-color:var(--accent-2)}
+.view-btn:focus{outline:3px solid var(--focus);border-radius:8px}
 
+/* filters */
 .filters select, .search-wrap input{padding:.4rem .6rem;border-radius:6px;border:1px solid #d1d5db}
+.search-wrap input:focus, .filters select:focus{outline:3px solid var(--focus)}
 
-.directory{display:grid;gap:1rem;grid-template-columns:1fr}
+/* directory list/grid */
+.directory{display:grid;gap:1rem;grid-template-columns:1fr;padding-bottom:1rem}
 
-/* grid view cards */
+/* grid view cards (default) */
 .grid-view .member-card{display:grid;grid-template-columns:1fr;gap:.5rem;background:var(--card);padding:.75rem;border-radius:8px;border:1px solid #e6e6e6;align-items:start}
 .card-media img{width:100%;height:auto;border-radius:6px}
 .member-name{margin:.25rem 0;font-size:1.05rem}
 .member-meta{margin:.15rem 0;color:var(--muted);font-size:.95rem}
 .member-category{font-weight:600;margin-top:.35rem}
 
+/* list view: images hidden, single column text layout; semantics improved by JS */
+.list-view .member-card{display:flex;flex-direction:column;gap:.25rem}
+.list-view .card-media{display:none}
+.list-view .member-card{padding:.6rem}
+
 /* membership visual flavors */
 .level-3{border-left:6px solid var(--gold)}
 .level-2{border-left:6px solid var(--silver)}
 .level-1{border-left:6px solid var(--member)}
 
-/* list view: images hidden, single column text layout */
-.list-view .member-card{display:flex;flex-direction:column;gap:.25rem}
-.list-view .card-media{display:none}
-.list-view .member-card{padding:.6rem}
-
 /* footer */
 .site-footer{padding:1rem;background:var(--card);border-top:1px solid #e5e7eb;text-align:center;color:var(--muted);font-size:.9rem;margin-top:1rem}
+
+/* Wider screens: show nav inline and hide hamburger */
+@media (min-width:700px) {
+  .navigation{display:block}
+  .navigation ul{flex-direction:row;gap:1rem}
+  .hamburger{display:none}
+  .page-main{display:grid;grid-template-columns:2fr 1fr;gap:1rem;padding:1.5rem}
+  h1{grid-column:1 / -1}
+  .grid-view.directory{grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));}
+  .grid-view .member-card{grid-template-columns:1fr;display:grid;gap:.6rem}
+  .directory.grid-view{align-items:start}
+}

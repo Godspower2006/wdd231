@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   if (lastEl) lastEl.textContent = document.lastModified || 'Not available';
 
+  /* mark directory as a list for assistive tech */
+  if (directoryEl) {
+    directoryEl.setAttribute('role', 'list');
+  }
+
   async function loadMembers() {
     try {
       directoryEl.setAttribute('aria-busy', 'true');
@@ -36,7 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function createMemberCard(m) {
     const article = document.createElement('article');
     article.className = `member-card level-${m.level}`;
-    article.setAttribute('tabindex', 0);
+    // semantics for listview/listitem
+    article.setAttribute('role', 'listitem');
+    article.setAttribute('tabindex', '0');
     article.innerHTML = `
       <div class="card-media">
         <img src="images/${m.image}" alt="${m.name} logo" width="480" height="270" loading="lazy">
@@ -61,8 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const frag = document.createDocumentFragment();
     list.forEach(m => frag.appendChild(createMemberCard(m)));
     directoryEl.appendChild(frag);
+
+    // set view class on directory (grid vs list)
     directoryEl.classList.toggle('list-view', currentView === 'list');
     directoryEl.classList.toggle('grid-view', currentView === 'grid');
+
+    // update directory ARIA role/label for current view (helpful to AT users)
+    directoryEl.setAttribute('aria-label', currentView === 'list' ? 'Member list view' : 'Member grid view');
   }
 
   function applyFilters() {
@@ -73,20 +85,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (level !== 'all') out = out.filter(m => String(m.level) === level);
     if (q) out = out.filter(m => (m.name + ' ' + m.address + ' ' + m.category + ' ' + (m.notes || '')).toLowerCase().includes(q));
     renderMembers(out);
+
+    // move focus to directory after filter/toggle so keyboard users know content updated
+    if (directoryEl) directoryEl.focus();
   }
 
+  // helper to toggle buttons (also used for keyboard events)
+  function setView(view) {
+    currentView = view;
+    gridBtn.setAttribute('aria-pressed', view === 'grid' ? 'true' : 'false');
+    listBtn.setAttribute('aria-pressed', view === 'list' ? 'true' : 'false');
+    applyFilters();
+  }
+
+  // mouse & keyboard support for toggle buttons
   if (gridBtn && listBtn) {
-    gridBtn.addEventListener('click', () => {
-      currentView = 'grid';
-      gridBtn.setAttribute('aria-pressed', 'true');
-      listBtn.setAttribute('aria-pressed', 'false');
-      applyFilters();
-    });
-    listBtn.addEventListener('click', () => {
-      currentView = 'list';
-      gridBtn.setAttribute('aria-pressed', 'false');
-      listBtn.setAttribute('aria-pressed', 'true');
-      applyFilters();
+    gridBtn.addEventListener('click', () => setView('grid'));
+    listBtn.addEventListener('click', () => setView('list'));
+
+    // keyboard activation (Space or Enter)
+    [gridBtn, listBtn].forEach(btn => {
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+      // ensure they are focusable
+      btn.setAttribute('tabindex', '0');
+      btn.setAttribute('role', 'button');
     });
   }
 

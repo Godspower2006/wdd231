@@ -1,4 +1,3 @@
-// scripts/home.js
 document.addEventListener('DOMContentLoaded', () => {
   const membersUrl = 'data/members.json';
   const spotlightEl = document.getElementById('spotlight-list');
@@ -6,23 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentTempEl = document.getElementById('current-temp');
   const currentDescEl = document.getElementById('current-desc');
   const weatherIconEl = document.getElementById('weather-icon');
+  const weatherCurrent = document.getElementById('weather-current');
   const yearEl = document.getElementById('currentyear');
   const lastEl = document.getElementById('lastModified');
 
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   if (lastEl) lastEl.textContent = document.lastModified || 'Not available';
 
-  /* ---------- WEATHER SETTINGS ----------
-     Using your API key and Lagos coordinates
-  */
   const OPENWEATHER_API_KEY = '96dd8607d22b7d21d2a2f28da81a68be';
-  const LAT = 6.45;   // Lagos latitude (approx)
-  const LON = 3.40;   // Lagos longitude (approx)
-
+  const LAT = 6.45;
+  const LON = 3.40;
   const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${LAT}&lon=${LON}&exclude=minutely,hourly,alerts&units=metric&appid=${OPENWEATHER_API_KEY}`;
 
   async function loadWeather() {
     try {
+      if (weatherCurrent) weatherCurrent.setAttribute('aria-busy', 'true');
       const res = await fetch(weatherUrl);
       if (!res.ok) throw new Error(`Weather fetch failed: ${res.status}`);
       const data = await res.json();
@@ -37,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
       weatherIconEl.alt = desc;
       weatherIconEl.style.display = '';
 
-      // 3-day forecast (next 3 days)
+      // 3-day forecast
       forecastListEl.innerHTML = '';
-      const days = data.daily.slice(1, 4);
+      const days = (data.daily || []).slice(1, 4);
       days.forEach(d => {
         const dateText = new Date(d.dt * 1000).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
         const dayTemp = `${Math.round(d.temp.day)}°C`;
@@ -55,24 +52,24 @@ document.addEventListener('DOMContentLoaded', () => {
       currentTempEl.textContent = '--';
       currentDescEl.textContent = 'Unavailable';
       forecastListEl.innerHTML = '<li>Forecast unavailable</li>';
+    } finally {
+      if (weatherCurrent) weatherCurrent.setAttribute('aria-busy', 'false');
     }
   }
 
-  /* ---------- SPOTLIGHTS: random 2-3 gold/silver members ---------- */
   async function loadSpotlights() {
     try {
       const res = await fetch(membersUrl);
       if (!res.ok) throw new Error(`Members fetch failed: ${res.status}`);
       const members = await res.json();
 
-      // filter gold (3) and silver (2)
       const candidates = members.filter(m => Number(m.level) >= 2);
       if (!candidates.length) {
         spotlightEl.innerHTML = '<p>No silver/gold members found.</p>';
         return;
       }
 
-      // shuffle (Fisher-Yates) and pick 2 or 3
+      // shuffle
       for (let i = candidates.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
@@ -102,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Run both
   loadWeather();
   loadSpotlights();
 });
