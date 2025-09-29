@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Andrew's Chamber — Thank You</title>
+  <meta name="description" content="Thanks for applying to Andrew's Chamber. Confirmation of your application details.">
+  <meta name="author" content="Andrew Godspower">
+  <link rel="icon" href="images/favicon.ico">
+
+  <link rel="stylesheet" href="../styles/small.css">
+  <link rel="stylesheet" href="../styles/large.css">
+  <style>
+    /* minimal styling for display */
+    .card { background: #fff; padding:1rem; border-radius:8px; border:1px solid #e6e6e6; max-width:760px; margin:1rem auto;}
+    dl { display:grid; gap:.5rem; grid-template-columns: 1fr 2fr; }
+    dt { font-weight:700; color:#333; }
+    dd { margin:0; color:#444; }
+  </style>
+  <script>
+    // Display query params on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const first = params.get('first') || '--';
+      const last = params.get('last') || '--';
+      const email = params.get('email') || '--';
+      const phone = params.get('phone') || '--';
+      const business = params.get('business') || '--';
+      const ts = params.get('ts') || '--';
+
+      document.getElementById('name').textContent = `${first} ${last}`;
+      document.getElementById('email').textContent = email;
+      document.getElementById('phone').textContent = phone;
+      document.getElementById('business').textContent = business;
+      document.getElementById('ts').textContent = ts;
+    });
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Andrew's Chamber Home">
+        <svg width="48" height="48" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <rect width="100" height="100" rx="12" fill="#2b6cb0"></rect>
+          <text x="50" y="62" font-size="48" text-anchor="middle" fill="#fff" font-family="Roboto, Arial">A</text>
+        </svg>
+      </a>
+      <span class="site-title">Andrew's Chamber of Commerce</span>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="card">
+      <h1>Thank you — Application submitted</h1>
+      <p>We appreciate your interest in joining Andrew's Chamber. A confirmation of the required fields you provided is shown below:</p>
+
+      <dl>
+        <dt>Name</dt><dd id="name"></dd>
+        <dt>Email</dt><dd id="email"></dd>
+        <dt>Phone</dt><dd id="phone"></dd>
+        <dt>Business / Organization</dt><dd id="business"></dd>
+        <dt>Submitted at</dt><dd id="ts"></dd>
+      </dl>
+
+      <p><a href="index.html">Return to home</a> | <a href="directory.html">View members</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; Andrew's Chamber</p>
+  </footer>
+</body>
+</html>

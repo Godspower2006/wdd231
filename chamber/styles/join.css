@@ -1,0 +1,100 @@
+/* join.css - page specific styles */
+
+:root {
+  --accent-2: #2b6cb0;
+  --muted: #4b5563;
+  --card-radius: 10px;
+  --focus: #ffbf47;
+}
+
+.join-layout {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+/* ensure cards look consistent with site */
+.card { background: var(--card, #fff); border-radius: 8px; padding: .85rem; border: 1px solid #e6e6e6; }
+
+.form-card label {
+  display: block;
+  margin-bottom: .6rem;
+  font-size: .95rem;
+}
+.form-card input[type="text"],
+.form-card input[type="email"],
+.form-card input[type="tel"],
+.form-card select,
+.form-card textarea {
+  display: block;
+  width: 100%;
+  padding: .45rem .6rem;
+  margin-top: .25rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+}
+
+.form-actions { margin-top: .8rem; }
+.form-actions input[type="submit"] {
+  background: var(--accent-2);
+  color: #fff;
+  padding: .7rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight:700;
+}
+.form-actions input[type="submit"]:focus { outline: 3px solid var(--focus); }
+
+.hint { display:block; font-size:.8rem; color:var(--muted); }
+
+/* membership cards */
+.membership-cards .cards { display:grid; gap:.75rem; grid-template-columns:1fr; margin-top:.5rem; }
+.level-card { padding:.75rem; border-radius:8px; background: #fff; border:1px solid #e6e6e6; box-shadow: 0 6px 18px rgba(43,108,176,0.05); }
+.level-card h3 { margin:.15rem 0; }
+.level-card .more-link { color:var(--accent-2); text-decoration:underline; }
+
+/* animation on initial load (subtle, not distracting) */
+@keyframes appearUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.cards .level-card {
+  animation: appearUp .6s ease forwards;
+}
+/* staggered delays */
+.cards .level-card:nth-child(1) { animation-delay: .05s; }
+.cards .level-card:nth-child(2) { animation-delay: .12s; }
+.cards .level-card:nth-child(3) { animation-delay: .20s; }
+.cards .level-card:nth-child(4) { animation-delay: .28s; }
+
+/* dialogs */
+dialog {
+  border: 1px solid rgb(0 0 0 / 10%);
+  border-radius: .5rem;
+  padding: 1rem 1.25rem;
+  background-color: #fff;
+  box-shadow: 0 0 3rem rgba(0,0,0,.35);
+  width: 90%;
+  max-width: 520px;
+}
+::backdrop { background-color: rgba(0,0,0,0.45); }
+
+/* close button inside dialog */
+dialog .close-dialog {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background:none;
+  border: none;
+  cursor:pointer;
+  font-size:1rem;
+}
+
+/* larger screens: two-column layout */
+@media (min-width: 800px) {
+  .join-layout { grid-template-columns: 1fr 340px; gap:1.25rem; }
+  .cards { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Andrew's Chamber — Join</title>
+  <meta name="description" content="Apply to join Andrew's Chamber of Commerce. Fill out the membership form to become a member.">
+  <meta name="author" content="Andrew Godspower">
+  <link rel="icon" href="images/favicon.ico">
+
+  <!-- normalize + fonts (optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- global site CSS -->
+  <link rel="stylesheet" href="../styles/small.css">
+  <link rel="stylesheet" href="../styles/large.css">
+
+  <!-- page-specific CSS -->
+  <link rel="stylesheet" href="styles/join.css">
+
+  <!-- scripts -->
+  <script defer src="scripts/navigation.js"></script>
+  <script defer src="scripts/join.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Andrew's Chamber Home">
+        <!-- inline SVG fallback logo -->
+        <svg width="48" height="48" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <rect width="100" height="100" rx="12" fill="#2b6cb0"></rect>
+          <text x="50" y="62" font-size="48" text-anchor="middle" fill="#fff" font-family="Roboto, Arial">A</text>
+        </svg>
+      </a>
+      <span class="site-title">Andrew's Chamber of Commerce</span>
+      <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+    </div>
+
+    <nav id="nav-bar" class="navigation" role="navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="join.html" aria-current="page">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-main" role="main">
+    <h1>Membership Application</h1>
+
+    <div class="join-layout">
+      <!-- Form column -->
+      <section class="card form-card" aria-labelledby="join-heading">
+        <h2 id="join-heading">Apply to Join</h2>
+
+        <!-- Use GET and point to thankyou.html -->
+        <form method="get" action="thankyou.html" id="joinForm" novalidate>
+          <!-- Each input is wrapped inside its label for accessibility -->
+          <label>
+            First name
+            <input type="text" name="first" id="first" title="First name" autocomplete="given-name" required>
+          </label>
+
+          <label>
+            Last name
+            <input type="text" name="last" id="last" title="Last name" autocomplete="family-name" required>
+          </label>
+
+          <label>
+            Organizational title
+            <input type="text"
+                   name="orgtitle"
+                   id="orgtitle"
+                   title="Organizational title (letters, hyphens, spaces; min 7 chars)"
+                   autocomplete="organization-title"
+                   pattern="^[A-Za-z\s-]{7,}$"
+                   placeholder="e.g. Executive Director"
+                   required>
+            <small class="hint">Only letters, hyphens and spaces. Minimum 7 characters.</small>
+          </label>
+
+          <label>
+            Email address
+            <input type="email" name="email" id="email" title="Email address" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+
+          <label>
+            Mobile phone
+            <input type="tel" name="phone" id="phone" title="Mobile telephone number" autocomplete="tel" placeholder="+2347000000000" required>
+          </label>
+
+          <label>
+            Business / Organization name
+            <input type="text" name="business" id="business" title="Business or organization name" autocomplete="organization" required>
+          </label>
+
+          <label>
+            Membership level
+            <select name="membership" id="membership" title="Choose membership level" required>
+              <option value="">-- choose a level --</option>
+              <option value="np">NP Membership (Non-profit)</option>
+              <option value="bronze">Bronze Membership</option>
+              <option value="silver">Silver Membership</option>
+              <option value="gold">Gold Membership</option>
+            </select>
+          </label>
+
+          <label>
+            Business description
+            <textarea name="description" id="description" title="Describe your business" rows="4"></textarea>
+          </label>
+
+          <!-- hidden timestamp -->
+          <input type="hidden" name="ts" id="ts" value="">
+
+          <div class="form-actions">
+            <input type="submit" value="Submit Application" id="submitBtn">
+          </div>
+        </form>
+      </section>
+
+      <!-- Membership cards (on small screens they appear below; on large screens right column) -->
+      <aside class="card membership-cards" aria-labelledby="levels-heading">
+        <h2 id="levels-heading">Membership Levels</h2>
+
+        <div class="cards" id="cards">
+          <article class="level-card level-np" data-modal="modal-np" tabindex="0" role="button" aria-pressed="false">
+            <h3>NP Membership</h3>
+            <p>No fee — For non-profit organizations.</p>
+            <a href="#" class="more-link" data-modal="modal-np">More info</a>
+          </article>
+
+          <article class="level-card level-bronze" data-modal="modal-bronze" tabindex="0" role="button" aria-pressed="false">
+            <h3>Bronze</h3>
+            <p>Basic listing and event notices.</p>
+            <a href="#" class="more-link" data-modal="modal-bronze">More info</a>
+          </article>
+
+          <article class="level-card level-silver" data-modal="modal-silver" tabindex="0" role="button" aria-pressed="false">
+            <h3>Silver</h3>
+            <p>Directory listing + one spotlight per year.</p>
+            <a href="#" class="more-link" data-modal="modal-silver">More info</a>
+          </article>
+
+          <article class="level-card level-gold" data-modal="modal-gold" tabindex="0" role="button" aria-pressed="false">
+            <h3>Gold</h3>
+            <p>Top placement, multiple spotlights, event perks.</p>
+            <a href="#" class="more-link" data-modal="modal-gold">More info</a>
+          </article>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Modals: use dialog (four dialogs) -->
+    <dialog id="modal-np" aria-labelledby="modal-np-title">
+      <button class="close-dialog" aria-label="Close">❌</button>
+      <h3 id="modal-np-title">NP Membership — Benefits</h3>
+      <p>No fee. Includes directory listing, invites to community meetings, and access to nonprofit resources.</p>
+    </dialog>
+
+    <dialog id="modal-bronze" aria-labelledby="modal-bronze-title">
+      <button class="close-dialog" aria-label="Close">❌</button>
+      <h3 id="modal-bronze-title">Bronze Membership — Benefits</h3>
+      <p>Directory listing, event notices, member newsletter, and access to discounted training.</p>
+    </dialog>
+
+    <dialog id="modal-silver" aria-labelledby="modal-silver-title">
+      <button class="close-dialog" aria-label="Close">❌</button>
+      <h3 id="modal-silver-title">Silver Membership — Benefits</h3>
+      <p>Everything in Bronze plus one home-page spotlight per year and discounted sponsorship opportunities.</p>
+    </dialog>
+
+    <dialog id="modal-gold" aria-labelledby="modal-gold-title">
+      <button class="close-dialog" aria-label="Close">❌</button>
+      <h3 id="modal-gold-title">Gold Membership — Benefits</h3>
+      <p>Top-tier: multiple spotlights, premium event sponsorship, priority promotion, and advisory privileges.</p>
+    </dialog>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="contact">
+      <p>Andrew's Chamber of Commerce — 10 Rue de La Paix, Andrew's Chamber</p>
+      <p>Email: godspowerandrew886@gmail.com • Phone: (+234) 708 852 0985</p>
+    </div>
+    <p>&copy; <span id="currentyear"></span> Andrew's Chamber — Andrew Godspower — WDD231</p>
+    <p id="lastModified">Last modified: </p>
+  </footer>
+</body>
+</html>
