@@ -4,91 +4,135 @@
   --accent: #2b6cb0;
   --muted: #4b5563;
   --focus: #ffbf47;
-  --gap: 1rem;
+  --radius: 10px;
   font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
   color-scheme: light;
 }
 
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;background:var(--bg);color:#111}
-a{color:var(--accent)}
+a{color:inherit}
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
 
-.site-header{display:flex;align-items:center;gap:.75rem;padding:.75rem;background:var(--card);border-bottom:1px solid #e6eef5}
+.site-header{display:flex;align-items:center;gap:.75rem;padding:.75rem;background:var(--card);border-bottom:1px solid #e5e7eb}
 .header-inner{display:flex;align-items:center;gap:.75rem;width:100%}
 .site-title{font-weight:700;font-size:1rem}
-.hamburger{margin-left:auto;border:0;background:none;font-size:1.4rem;cursor:pointer}
+.hamburger{margin-left:auto;border:0;background:none;font-size:1.6rem;cursor:pointer}
 
 .navigation{display:none}
 .navigation.show{display:block;padding:.5rem}
 .navigation ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.25rem}
 .navigation a{display:block;padding:.5rem;border-radius:6px}
-.navigation a[aria-current="page"]{text-decoration:underline}
 
 .page-main{max-width:1100px;margin:0 auto;padding:1rem}
-h1{font-size:1.5rem;margin:0 0 .75rem}
+h1{font-size:1.6rem;margin:0 0 .75rem}
+.visit-message{margin:.5rem 0;padding:.6rem;border-radius:6px;background:var(--card);border:1px solid #e6eef5;color:var(--muted)}
 
-/* small-card / intro */
-.card{background:var(--card);padding:.9rem;border-radius:8px;border:1px solid #e6eaf0;margin-bottom:var(--gap)}
-.visit-message{margin-bottom:.75rem;padding:.6rem;border-radius:6px;background:#fff;border:1px solid #e6eef5;color:var(--muted)}
-
-/* discover grid base (mobile-first) */
-/* We will assign named grid areas 1..8 (a-h) for layout flexibility */
+/* grid container: we will use named grid areas a1..a8 */
 .discover-grid{
   display:grid;
-  gap:var(--gap);
+  gap:1rem;
   grid-template-columns: 1fr;
   grid-template-areas:
-    "a" "b" "c" "d" "e" "f" "g" "h";
-  margin-top: .75rem;
+    "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8";
+  margin-bottom: 2rem;
 }
 
-/* card */
-.place-card{display:flex;flex-direction:column;gap:.6rem;background:var(--card);padding:.85rem;border-radius:8px;border:1px solid #e6eef5}
-.place-figure{margin:0}
-.place-figure img{width:100%;height:auto;display:block;border-radius:6px;object-fit:cover}
-.place-title{font-size:1.05rem;margin:.2rem 0}
-.place-address{font-style:normal;color:var(--muted);margin:0 .05rem .25rem}
-.place-desc{color:var(--muted);margin:0 .05rem .6rem}
-.place-actions{display:flex;gap:.5rem}
-.learn-btn{background:var(--accent);color:#fff;border:0;padding:.45rem .7rem;border-radius:6px;cursor:pointer}
-.learn-btn:focus{outline:3px solid var(--focus);outline-offset:3px}
+/* cards */
+.place-card{
+  background:var(--card);
+  border-radius:8px;
+  padding:.75rem;
+  border:1px solid #e6e6e6;
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  box-shadow: 0 2px 8px rgba(16,24,40,0.03);
+}
+.place-figure img{
+  width:100%;
+  max-width:100%;
+  height:auto;
+  display:block;
+  border-radius:6px;
+  object-fit:cover;
+}
+
+/* small text helper */
+.small{font-size:.95rem}
+.muted{color:var(--muted)}
+
+.place-title{margin:.25rem 0;font-size:1.05rem}
+.place-address{font-style:normal;margin:0;color:var(--muted)}
+
+/* learn more button */
+.learn-btn{
+  margin-top:auto;
+  align-self:flex-start;
+  background:var(--accent);
+  color:#fff;
+  border:0;padding:.5rem .8rem;border-radius:8px;text-decoration:none;cursor:pointer;
+}
+.learn-btn:focus{outline:3px solid var(--focus); outline-offset:3px}
 
 /* dialog styling */
-dialog{border:1px solid rgba(0,0,0,.06);border-radius:8px;padding:1rem;background:var(--card);max-width:800px}
-::backdrop{background:rgb(0 0 0 / 40%)}
-.dialog-close{position:absolute;right:14px;top:12px;border:0;background:none;font-size:1rem;cursor:pointer}
+dialog{
+  border:1px solid rgb(0 0 0 / 10%);
+  border-radius:.5rem;
+  padding:1rem 1.25rem;
+  background-color: #fff;
+  box-shadow: 0 0 3rem rgba(0,0,0,0.35);
+  width: 92%;
+  max-width: 800px;
+}
+::backdrop{ background-color: rgb(0 0 0 / 45%); }
+.dialog-close{ position: absolute; right: 18px; top: 18px; border:0;background:#fff;border-radius:6px;padding:.35rem .6rem;cursor:pointer}
+.dialog-close:focus{outline:3px solid var(--focus);}
 
-/* larger screens: medium (2 columns) and large (named layout) */
-@media (min-width:641px){
-  .navigation{display:block}
-  .navigation ul{flex-direction:row;gap:1rem}
-  .discover-grid{grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
-  /* don't show hover effect on mobile - apply below for >=641px */
-  .place-figure img { transition: transform .35s ease, filter .35s ease; }
-  .place-figure img:hover { transform: scale(1.025); filter: brightness(1.04); }
+/* named area classes map to grid areas so JS can assign grid-area */
+.place-card[data-area="a1"]{ grid-area: a1; }
+.place-card[data-area="a2"]{ grid-area: a2; }
+.place-card[data-area="a3"]{ grid-area: a3; }
+.place-card[data-area="a4"]{ grid-area: a4; }
+.place-card[data-area="a5"]{ grid-area: a5; }
+.place-card[data-area="a6"]{ grid-area: a6; }
+.place-card[data-area="a7"]{ grid-area: a7; }
+.place-card[data-area="a8"]{ grid-area: a8; }
+
+/* hover image effect only for larger screens (not mobile) */
+@media (min-width: 641px){
+  .place-figure img{
+    transition: transform .35s ease, filter .35s ease;
+  }
+  .place-figure img:hover{
+    transform: scale(1.03);
+    filter: brightness(.98) saturate(1.05);
+  }
 }
 
-/* large layout uses named grid areas for interesting composition */
-@media (min-width:1025px){
+/* medium screens: 2 columns */
+@media (min-width: 641px) and (max-width: 1024px){
+  .discover-grid{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "a1 a2"
+      "a3 a4"
+      "a5 a6"
+      "a7 a8";
+  }
+}
+
+/* large screens: 4 columns */
+@media (min-width: 1025px){
   .discover-grid{
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
-      "a a b c"
-      "d e f g"
-      "h h f g";
-    grid-auto-rows: auto;
+      "a1 a2 a3 a4"
+      "a5 a6 a7 a8";
   }
-  /* Place cards in explicit areas by data-area attribute (set by JS) */
-  .discover-grid > [data-area="a"]{grid-area:a}
-  .discover-grid > [data-area="b"]{grid-area:b}
-  .discover-grid > [data-area="c"]{grid-area:c}
-  .discover-grid > [data-area="d"]{grid-area:d}
-  .discover-grid > [data-area="e"]{grid-area:e}
-  .discover-grid > [data-area="f"]{grid-area:f}
-  .discover-grid > [data-area="g"]{grid-area:g}
-  .discover-grid > [data-area="h"]{grid-area:h}
+
+  .page-main{padding:1.5rem}
 }
 
-/* accessibility focus */
-:focus{outline-offset:3px}
+/* footer */
+.site-footer{padding:1rem;background:var(--card);border-top:1px solid #e5e7eb;text-align:center;color:var(--muted);font-size:.9rem;margin-top:1rem}

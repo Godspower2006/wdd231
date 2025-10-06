@@ -1,21 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Andrew's Chamber — Discover</title>
-  <meta name="description" content="Discover local places and features in Andrew's Chamber — gallery, addresses, descriptions and local visitor message.">
+  <meta name="description" content="Discover local places and features in Andrew's Chamber — gallery, addresses, descriptions and visitor message.">
   <meta name="author" content="Andrew Godspower">
+
+  <!-- Favicon -->
   <link rel="icon" href="images/favicon.ico">
 
-  <!-- Normalize + font (optional) -->
+  <!-- Open Graph + Twitter -->
+  <meta property="og:title" content="Andrew's Chamber — Discover">
+  <meta property="og:description" content="Discover local places, events and visitor info for Andrew's Chamber.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://godspower2006.github.io/wdd231/chamber/discover.html">
+  <meta property="og:image" content="https://godspower2006.github.io/wdd231/chamber/images/item1.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Andrew's Chamber — Discover">
+  <meta name="twitter:description" content="Discover local places, events and visitor info for Andrew's Chamber.">
+  <meta name="twitter:image" content="https://godspower2006.github.io/wdd231/chamber/images/item1.webp">
+
+  <!-- Normalize + fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- page CSS -->
+  <!-- Page CSS -->
   <link rel="stylesheet" href="styles/discover.css">
 
-  <!-- page script -->
+  <!-- Navigation behavior (assumes you have a navigation.js that matches other pages) -->
+  <script defer src="scripts/navigation.js"></script>
+  <!-- Page script -->
   <script defer src="scripts/discover.js"></script>
 </head>
 <body>
@@ -23,7 +40,7 @@
 
   <header class="site-header" role="banner">
     <div class="header-inner">
-      <a class="logo" href="index.html" aria-label="Andrew's Chamber Home">
+      <a class="logo" href="index.html" aria-label="Andrew's Chamber home">
         <img src="images/logo.png" alt="Andrew's Chamber logo" width="48" height="48">
       </a>
       <span class="site-title">Andrew's Chamber of Commerce</span>
@@ -34,7 +51,7 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="directory.html">Directory</a></li>
-        <li><a href="discover.html" aria-current="page">Discover</a></li>
+        <li><a href="discover.html">Discover</a></li>
         <li><a href="join.html">Join</a></li>
       </ul>
     </nav>
@@ -43,60 +60,46 @@
   <main id="main" class="page-main" role="main">
     <h1>Discover Andrew's Chamber</h1>
 
-    <!-- visitor message (controlled by JS/localStorage) -->
+    <!-- Visit message (localStorage) -->
     <div id="visit-message" class="visit-message" aria-live="polite"></div>
 
-    <!-- explanatory intro -->
-    <section class="intro card">
-      <p>Explore local points of interest, events, and places to visit. Click "Learn more" to read details.</p>
+    <!-- Grid area that will hold the 8 cards -->
+    <section id="discover-grid" class="discover-grid" aria-label="Places of interest">
+      <!-- Cards will be injected by scripts/discover.js -->
     </section>
 
-    <!-- grid container using named grid areas -->
-    <section id="discover-grid" class="discover-grid" aria-label="Local places gallery">
-      <!-- cards are injected by scripts/discover.js -->
-    </section>
-
-    <!-- Template for a single card (cloned by JS) -->
-    <template id="card-template">
-      <article class="place-card">
-        <figure class="place-figure">
-          <!-- picture element created by JS for responsive webp -->
-        </figure>
-        <div class="place-body">
-          <h2 class="place-title"></h2>
-          <address class="place-address"></address>
-          <p class="place-desc"></p>
-          <div class="place-actions">
-            <button class="learn-btn" type="button">Learn more</button>
-          </div>
-        </div>
-      </article>
-    </template>
-
-    <!-- accessible dialog reused for "learn more" -->
-    <dialog id="details-dialog" aria-labelledby="dialog-title">
-      <button id="close-dialog" class="dialog-close" aria-label="Close dialog">✖</button>
+    <!-- dialog used to show details when user clicks "Learn more" -->
+    <dialog id="placeDialog" aria-labelledby="dialog-title">
+      <button id="closeDialog" class="dialog-close" aria-label="Close dialog">❌</button>
       <h2 id="dialog-title"></h2>
-      <p id="dialog-address" class="dialog-address"></p>
-      <figure id="dialog-figure"><img id="dialog-img" src="" alt="" width="600" height="400"></figure>
-      <p id="dialog-desc"></p>
+      <figure id="dialog-figure">
+        <img id="dialog-img" src="" alt="" width="600" height="400" loading="lazy" decoding="async">
+        <figcaption id="dialog-address" class="small muted"></figcaption>
+      </figure>
+      <div id="dialog-desc"></div>
     </dialog>
 
+    <!-- noscript fallback: provides static images for validators and for users without JS -->
+    <noscript>
+      <section class="static-images">
+        <p>JavaScript is disabled — here's a small static preview of places.</p>
+        <img src="images/item1.webp" alt="Place 1" width="300" height="200" loading="lazy">
+        <img src="images/item2.webp" alt="Place 2" width="300" height="200" loading="lazy">
+        <img src="images/item3.webp" alt="Place 3" width="300" height="200" loading="lazy">
+        <img src="images/item4.webp" alt="Place 4" width="300" height="200" loading="lazy">
+        <img src="images/item5.webp" alt="Place 5" width="300" height="200" loading="lazy">
+        <img src="images/item6.webp" alt="Place 6" width="300" height="200" loading="lazy">
+      </section>
+    </noscript>
   </main>
 
   <footer class="site-footer" role="contentinfo">
     <div class="contact">
-      <p>Andrew's Chamber of Commerce — 10 Rue de La Paix</p>
+      <p>Andrew's Chamber of Commerce — 10 Rue de La Paix, Andrew's Chamber</p>
       <p>Email: godspowerandrew886@gmail.com • Phone: (+234) 708 852 0985</p>
     </div>
-    <p>&copy; <span id="currentyear"></span> Andrew's Chamber — WDD231</p>
+    <p>&copy; <span id="currentyear"></span> Andrew's Chamber — Andrew Godspower — WDD231</p>
+    <p id="lastModified">Last modified: </p>
   </footer>
-
-  <noscript>
-    <style>
-      .discover-grid { display:block; }
-    </style>
-    <p class="no-js-warning">This page works best with JavaScript enabled.</p>
-  </noscript>
 </body>
 </html>
