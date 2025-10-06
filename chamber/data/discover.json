@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Riverside Market",
+    "address": "12 River St, Andrew's Chamber",
+    "description": "A historic outdoor market with local crafts, food stalls and weekly live music.",
+    "image": "item1.webp"
+  },
+  {
+    "id": 2,
+    "title": "Old Town Museum",
+    "address": "5 Heritage Ave",
+    "description": "Small local museum showcasing the town's history and cultural artifacts.",
+    "image": "item2.webp"
+  },
+  {
+    "id": 3,
+    "title": "Sunset Park",
+    "address": "99 Park Road",
+    "description": "Community park with river views, playgrounds and picnic areas.",
+    "image": "item3.webp"
+  },
+  {
+    "id": 4,
+    "title": "Artisan Row",
+    "address": "22 Market Lane",
+    "description": "A cluster of artisan shops and galleries featuring local creators.",
+    "image": "item4.webp"
+  },
+  {
+    "id": 5,
+    "title": "Civic Theater",
+    "address": "3 Theater Square",
+    "description": "Historic performance venue hosting plays, concerts and community events.",
+    "image": "item5.webp"
+  },
+  {
+    "id": 6,
+    "title": "Harbor Walk",
+    "address": "Harborfront",
+    "description": "Scenic walk along the harbor with benches, sculptures and cafes.",
+    "image": "item6.webp"
+  },
+  {
+    "id": 7,
+    "title": "Botanical Gardens",
+    "address": "44 Greenway",
+    "description": "Botanical display with seasonal plants, greenhouse and a learning center.",
+    "image": "item7.webp"
+  },
+  {
+    "id": 8,
+    "title": "Mountain View Trail",
+    "address": "Trailhead Ln",
+    "description": "Popular hiking trail with panoramic views of the region — great for families.",
+    "image": "item8.webp"
+  }
+]

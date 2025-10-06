@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Andrew's Chamber — Discover</title>
+  <meta name="description" content="Discover local places and features in Andrew's Chamber — gallery, addresses, descriptions and local visitor message.">
+  <meta name="author" content="Andrew Godspower">
+  <link rel="icon" href="images/favicon.ico">
+
+  <!-- Normalize + font (optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- page CSS -->
+  <link rel="stylesheet" href="styles/discover.css">
+
+  <!-- page script -->
+  <script defer src="scripts/discover.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Andrew's Chamber Home">
+        <img src="images/logo.png" alt="Andrew's Chamber logo" width="48" height="48">
+      </a>
+      <span class="site-title">Andrew's Chamber of Commerce</span>
+      <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+    </div>
+
+    <nav id="nav-bar" class="navigation" role="navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="discover.html" aria-current="page">Discover</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-main" role="main">
+    <h1>Discover Andrew's Chamber</h1>
+
+    <!-- visitor message (controlled by JS/localStorage) -->
+    <div id="visit-message" class="visit-message" aria-live="polite"></div>
+
+    <!-- explanatory intro -->
+    <section class="intro card">
+      <p>Explore local points of interest, events, and places to visit. Click "Learn more" to read details.</p>
+    </section>
+
+    <!-- grid container using named grid areas -->
+    <section id="discover-grid" class="discover-grid" aria-label="Local places gallery">
+      <!-- cards are injected by scripts/discover.js -->
+    </section>
+
+    <!-- Template for a single card (cloned by JS) -->
+    <template id="card-template">
+      <article class="place-card">
+        <figure class="place-figure">
+          <!-- picture element created by JS for responsive webp -->
+        </figure>
+        <div class="place-body">
+          <h2 class="place-title"></h2>
+          <address class="place-address"></address>
+          <p class="place-desc"></p>
+          <div class="place-actions">
+            <button class="learn-btn" type="button">Learn more</button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <!-- accessible dialog reused for "learn more" -->
+    <dialog id="details-dialog" aria-labelledby="dialog-title">
+      <button id="close-dialog" class="dialog-close" aria-label="Close dialog">✖</button>
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-address" class="dialog-address"></p>
+      <figure id="dialog-figure"><img id="dialog-img" src="" alt="" width="600" height="400"></figure>
+      <p id="dialog-desc"></p>
+    </dialog>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="contact">
+      <p>Andrew's Chamber of Commerce — 10 Rue de La Paix</p>
+      <p>Email: godspowerandrew886@gmail.com • Phone: (+234) 708 852 0985</p>
+    </div>
+    <p>&copy; <span id="currentyear"></span> Andrew's Chamber — WDD231</p>
+  </footer>
+
+  <noscript>
+    <style>
+      .discover-grid { display:block; }
+    </style>
+    <p class="no-js-warning">This page works best with JavaScript enabled.</p>
+  </noscript>
+</body>
+</html>
