@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Artist Collective — Site Plan</title>
+  <meta name="description" content="Site plan for an Artist Collective (small gallery & artist collective) — purpose, scenarios, color schema, typography, wireframes, and testing notes.">
+  <meta name="author" content="Andrew Godspower">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- External CSS (separate file per requirements) -->
+  <link rel="stylesheet" href="styles/siteplan.css">
+</head>
+<body>
+  <main class="container" id="main">
+    <header class="site-header" role="banner" aria-labelledby="title">
+      <h1 id="title" class="brand">Artist Collective <small class="muted">— Site Plan</small></h1>
+      <p class="tagline">Blueprint for the three-page project: Home • Gallery & Events • Join</p>
+    </header>
+
+    <section class="plan" id="site-name" aria-labelledby="sn">
+      <h2 id="sn">1. Site Name</h2>
+      <p><strong>Artist Collective</strong> — chosen because it communicates a community of local artists and a small gallery presence. Short, brandable, and suitable for both in-person exhibitions and virtual tours.</p>
+      <p><strong>Optional domain:</strong> artistcollective.org (example)</p>
+    </section>
+
+    <section class="plan" id="purpose" aria-labelledby="purpose-heading">
+      <h2 id="purpose-heading">2. Site Purpose</h2>
+      <p>The site will:</p>
+      <ul>
+        <li>Present current and upcoming exhibitions (dates, locations, RSVP/ticket links).</li>
+        <li>Show artist spotlights with portfolio thumbnails and contact/commission info.</li>
+        <li>Offer virtual tours, event signup forms, and membership information for artists/patrons.</li>
+      </ul>
+    </section>
+
+    <section class="plan" id="scenarios" aria-labelledby="scenarios-heading">
+      <h2 id="scenarios-heading">3. Scenarios (target user questions)</h2>
+      <ul>
+        <li><strong>Visitor:</strong> "What exhibitions are happening this weekend and how do I RSVP?"</li>
+        <li><strong>Artist:</strong> "How do I submit work for the next group show and who reviews submissions?"</li>
+      </ul>
+    </section>
+
+    <section class="plan two-col" id="colors-typography">
+      <div>
+        <h2 id="colors-heading">4. Color Schema</h2>
+        <p>Defined colors (CSS variables used in <code>styles/siteplan.css</code>):</p>
+        <ul>
+          <li><strong>--accent</strong> <span class="swatch accent-sample">#2b6cb0</span> — headings, primary CTAs, links.</li>
+          <li><strong>--accent-2</strong> <span class="swatch accent2-sample">#d4af37</span> — highlights, badges, membership ribbons.</li>
+          <li><strong>--bg / --surface</strong> — page background and card surfaces.</li>
+        </ul>
+
+        <h2 id="typography-heading">5. Typography</h2>
+        <p>Fonts chosen (Google Fonts):</p>
+        <ul>
+          <li><strong>Merriweather</strong> — headings, titles (serif, gallery / editorial feel).</li>
+          <li><strong>Roboto</strong> — body text, nav, forms (clean, readable).</li>
+        </ul>
+      </div>
+
+      <aside class="notes" aria-labelledby="notes-heading">
+        <h3 id="notes-heading">Notes</h3>
+        <p class="muted">The color variables and fonts are applied across this document so the plan demonstrates the chosen schema.</p>
+      </aside>
+    </section>
+
+    <section class="plan" id="wireframes" aria-labelledby="wf-heading">
+      <h2 id="wf-heading">6. Wireframes (Home Page)</h2>
+
+      <h3>Mobile (320–640px)</h3>
+      <div class="wireframe mobile-wire" aria-hidden="true">
+        <div class="wf-row wf-header">Header: Logo + Hamburger</div>
+        <div class="wf-row wf-hero">Hero image with CTA overlay</div>
+        <div class="wf-row wf-feature">Featured exhibition card</div>
+        <div class="wf-row wf-list">Artist spotlights (stacked)</div>
+        <div class="wf-row wf-footer">Footer: Contact & Social</div>
+      </div>
+
+      <h3>Desktop (≥1024px)</h3>
+      <div class="wireframe desktop-wire" aria-hidden="true">
+        <div class="wf-grid">
+          <div class="wf-col-main">
+            <div class="wf-row wf-hero-large">Hero (large image + CTA)</div>
+            <div class="wf-row wf-feature-grid">Featured exhibition + gallery thumbnails</div>
+            <div class="wf-row wf-gallery">Gallery grid / spotlight tiles</div>
+          </div>
+          <aside class="wf-col-side">
+            <div class="wf-row wf-events">Upcoming Events list</div>
+            <div class="wf-row wf-join">Join / Signup card</div>
+            <div class="wf-row wf-info">Visitor info / hours</div>
+          </aside>
+        </div>
+      </div>
+
+      <p class="muted">Implementation: use <code>grid-template-areas</code> to adapt these regions between breakpoints. Cards will be semantic (figure/figcaption, h2, address, p, button).</p>
+    </section>
+
+    <section class="plan" id="testing" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">7. Testing & Validation</h2>
+      <ul>
+        <li>Run HTML validation (w3.org) and fix errors.</li>
+        <li>Lighthouse audits for Accessibility, Best Practices, SEO and Performance (mobile & desktop).</li>
+        <li>Use CSS Overview in DevTools to check color contrast (AA).</li>
+        <li>Optimize images to WebP where possible, set width/height, and use <code>loading="lazy"</code> for offscreen images.</li>
+        <li>Keep initial page weight under 500 KB and avoid large blocking JS/CSS.</li>
+      </ul>
+    </section>
+
+    <footer class="site-footer" role="contentinfo">
+      <p class="muted">Prepared for W05: Site Plan — Artist Collective. Author: Andrew Godspower.</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* Color scheme variables */
+:root{
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --accent: #2b6cb0;
+  --accent-2: #d4af37;
+  --muted: #4b5563;
+  --focus: #ffbf47;
+  --wire: #dbe7f3;
+  --radius: 10px;
+  --body-font: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --heading-font: "Merriweather", serif;
+}
+
+/* Base page */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:var(--body-font);background:var(--bg);color:#111}
+.container{max-width:960px;margin:1.25rem auto;padding:1rem}
+.site-header{background:var(--surface);border:1px solid var(--wire);border-radius:var(--radius);padding:1rem;margin-bottom:1rem}
+.brand{font-family:var(--heading-font);color:var(--accent);margin:0;font-size:1.35rem}
+.tagline{margin:.25rem 0 0 .125rem;color:var(--muted);font-size:.95rem}
+
+/* Plan sections */
+.plan{background:var(--surface);border:1px solid var(--wire);border-radius:8px;padding:1rem;margin-bottom:1rem}
+.plan h2{font-family:var(--heading-font);color:var(--accent);margin:.25rem 0 .6rem 0}
+.plan h3{font-family:var(--heading-font);color:var(--accent-2);margin:.5rem 0}
+.plan p, .plan li{font-size:1rem;line-height:1.45}
+.muted{color:var(--muted)}
+
+/* Two-column layout (colors/typography block) */
+.two-col{display:grid;grid-template-columns:1fr 320px;gap:1rem;align-items:start}
+.notes{background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid var(--wire);padding:.9rem;border-radius:6px}
+
+/* Swatches */
+.swatch{display:inline-block;padding:.15rem .5rem;margin-left:.35rem;border-radius:4px;border:1px solid var(--wire);font-weight:700}
+.accent-sample{background:var(--accent);color:#fff}
+.accent2-sample{background:var(--accent-2);color:#111}
+
+/* Wireframe blocks */
+.wireframe{border:1px dashed var(--wire);background:linear-gradient(180deg,#fff,#fbfbff);padding:.5rem;border-radius:6px}
+.wireframe .wf-row{background:#fff;border:1px solid #edf6ff;padding:.5rem;border-radius:6px;margin:0.4rem 0;color:var(--muted);font-size:.95rem}
+.wireframe .wf-grid{display:grid;grid-template-columns:1fr 320px;gap:.6rem}
+.wf-col-side .wf-row{background:#fff;border:1px solid #f1f5f9;padding:.5rem;border-radius:6px}
+
+/* Accessibility helpers */
+a.cta{background:var(--accent);color:#fff;padding:.5rem .8rem;border-radius:8px;text-decoration:none;display:inline-block}
+:focus{outline:3px solid var(--focus);outline-offset:3px}
+
+/* Responsive */
+@media (max-width:960px){
+  .two-col{grid-template-columns:1fr}
+  .wireframe .wf-grid{grid-template-columns:1fr}
+}
