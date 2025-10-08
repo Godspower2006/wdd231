@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Artist Collective — Home</title>
+  <meta name="description" content="Artist Collective — exhibitions, artist spotlights and ways to join.">
+  <meta name="author" content="Andrew Godspower">
+
+  <link rel="icon" href="images/favicon.ico">
+
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/discover.css">
+
+  <script type="module" src="scripts/main.js" defer></script>
+</head>
+<body data-page="index">
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Artist Collective Home">
+        <img src="images/logo.png" alt="Artist Collective logo" width="48" height="48">
+      </a>
+      <h1 class="site-title">Artist Collective</h1>
+      <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+    </div>
+
+    <nav id="nav-bar" class="navigation" role="navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-main" role="main">
+    <section class="hero">
+      <img src="images/hero.webp" alt="Gallery interior" width="1200" height="480" loading="lazy">
+      <a class="hero-cta" href="join.html">Become a Member</a>
+      <div class="hero-text">
+        <h2>Local exhibitions, artist spotlights and virtual tours</h2>
+        <p>Explore current exhibitions and discover the artists behind the work.</p>
+      </div>
+    </section>
+
+    <section class="spotlights card" aria-labelledby="spot-head">
+      <h2 id="spot-head">Spotlight Works</h2>
+      <div id="spotlight-list" class="spotlight-list" aria-live="polite">
+        <!-- JS injects 2–3 featured items -->
+      </div>
+      <p><a href="gallery.html">See the full gallery</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>&copy; <span id="currentyear"></span> Artist Collective — Andrew Godspower</p>
+  </footer>
+</body>
+</html>

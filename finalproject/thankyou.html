@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Artist Collective — Thank You</title>
+  <meta name="description" content="Thank you for joining Artist Collective.">
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/discover.css">
+  <script type="module" src="scripts/main.js" defer></script>
+</head>
+<body data-page="thankyou">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html"><img src="images/logo.png" alt="" width="48" height="48"></a>
+      <h1 class="site-title">Thank You</h1>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="card">
+      <h2>Thank you for your application</h2>
+      <div id="submission-data">
+        <!-- JS will display required form fields here -->
+      </div>
+      <p><a href="index.html">Return to home</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="currentyear"></span> Artist Collective — Andrew Godspower</p>
+  </footer>
+
+  <script>
+    // Parse URL params and display required fields (first, last, email, phone, business, timestamp)
+    (function(){
+      const params = new URLSearchParams(window.location.search);
+      const required = ['first','last','email','phone','business','timestamp'];
+      const container = document.getElementById('submission-data');
+      if (!container) return;
+      const dl = document.createElement('dl');
+      required.forEach(k=>{
+        const dt = document.createElement('dt');
+        dt.textContent = k.replace(/^[a-z]/, s => s.toUpperCase());
+        const dd = document.createElement('dd');
+        let val = params.get(k) || 'Not provided';
+        if (k === 'timestamp' && val !== 'Not provided') {
+          try { val = new Date(val).toLocaleString(); } catch(e) {}
+        }
+        dd.textContent = val;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+      });
+      container.appendChild(dl);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+[
+  {"id":"a001","title":"Dawn Over Canal","artist":"A. Rivera","year":2022,"medium":"Oil on canvas","image":"artist1.webp","description":"A luminous cityscape exploring morning light.","featured":true},
+  {"id":"a002","title":"Sand & Sky","artist":"L. Chen","year":2021,"medium":"Mixed media","image":"artist2.webp","description":"Abstract textures inspired by coastal dunes.","featured":false},
+  {"id":"a003","title":"Quiet Harbor","artist":"M. Okoro","year":2020,"medium":"Watercolor","image":"artist3.webp","description":"Soft watercolor harbor scene.","featured":true},
+  {"id":"a004","title":"Chromatic Fields","artist":"S. Patel","year":2023,"medium":"Acrylic","image":"artist4.webp","description":"Bold color blocks referencing landscape.","featured":false},
+  {"id":"a005","title":"Threads","artist":"R. Gomez","year":2019,"medium":"Textile","image":"artist5.webp","description":"Handwoven textile with layered patterns.","featured":false},
+  {"id":"a006","title":"Night Market","artist":"E. Okafor","year":2022,"medium":"Photography","image":"artist6.webp","description":"Documentary style market photography.","featured":false},
+  {"id":"a007","title":"Glass & Light","artist":"K. Suzuki","year":2021,"medium":"Glass","image":"artist7.webp","description":"Small sculptural glass piece.","featured":false},
+  {"id":"a008","title":"Paper Boat","artist":"N. Ali","year":2020,"medium":"Paper art","image":"artist8.webp","description":"Intricate folded paper installation.","featured":false},
+  {"id":"a009","title":"Blue Dune","artist":"D. Mensah","year":2023,"medium":"Oil","image":"artist9.webp","description":"Seascape with rich blues and texture.","featured":true},
+  {"id":"a010","title":"City Rhythm","artist":"H. Rossi","year":2018,"medium":"Digital print","image":"artist10.webp","description":"Geometric digital print inspired by transit.","featured":false},
+  {"id":"a011","title":"Cerulean","artist":"Y. Park","year":2021,"medium":"Ink","image":"artist11.webp","description":"Minimal ink composition exploring tone.","featured":false},
+  {"id":"a012","title":"Folded Memory","artist":"P. Santos","year":2022,"medium":"Mixed media","image":"artist12.webp","description":"Collage pieces with found paper.","featured":false},
+  {"id":"a013","title":"Route 7","artist":"C. Mwangi","year":2019,"medium":"Spray paint","image":"artist13.webp","description":"Street-art influenced aerosol work.","featured":false},
+  {"id":"a014","title":"Sunset Loom","artist":"I. Dimitrov","year":2023,"medium":"Weaving","image":"artist14.webp","description":"Hand-woven piece with sunset palette.","featured":false},
+  {"id":"a015","title":"Quiet Geometry","artist":"F. Rivera","year":2020,"medium":"Ceramic","image":"artist15.webp","description":"Delicate ceramic forms with matte glaze.","featured":false}
+]

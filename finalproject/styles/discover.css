@@ -1,0 +1,76 @@
+/* typography and cards */
+h1,h2,h3{font-family:var(--heading-font);color:var(--accent);margin:0 0 .5rem 0}
+.art-card{display:block;border-radius:8px;background:var(--card);border:1px solid var(--wire);overflow:hidden}
+.art-card figure{margin:0}
+.card-body{padding:.6rem}
+
+/* grid template areas for gallery page */
+.discover-grid .grid-area{
+  display:grid;
+  gap:1rem;
+  grid-template-columns:1fr;
+  grid-template-areas:
+    "hero"
+    "list";
+}
+
+/* actual gallery grid */
+#gallery-list{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:1rem;
+}
+
+/* responsive breakpoints */
+@media (min-width:641px) {
+  .navigation{display:block}
+  .navigation ul{flex-direction:row;gap:1rem}
+  /* gallery multi-column */
+  #gallery-list{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width:1025px) {
+  /* larger gallery layout with named areas - example of grid-template-areas usage */
+  .discover-grid .grid-area{
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "list side";
+  }
+  #gallery-list{
+    grid-column: 1 / 2;
+    grid-template-columns: repeat(3, 1fr);
+    gap:1rem;
+  }
+
+  .membership-cards { position: sticky; top: 1rem; }
+}
+
+/* dialog styling */
+dialog{
+  border:none;
+  border-radius:8px;
+  padding:1rem;
+  width:clamp(280px, 60vw, 800px);
+  max-width:95%;
+}
+dialog::backdrop{background:rgb(0 0 0 / 0.45)}
+
+/* form layout */
+.form-card label{display:block;margin-bottom:.6rem}
+.form-card input[type="text"], .form-card input[type="email"], .form-card input[type="tel"], .form-card textarea, .form-card select{
+  width:100%;padding:.5rem;border:1px solid var(--wire);border-radius:6px;margin-top:.25rem
+}
+
+/* membership level initial animation */
+@keyframes popIn {
+  from { transform: translateY(12px); opacity:0 }
+  to { transform: translateY(0); opacity:1 }
+}
+.level-card.animate{animation: popIn 600ms ease forwards}
+.levels{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+@media (max-width:640px){ .levels{grid-template-columns:1fr} }
+
+/* accessibility focus */
+:focus{outline:3px solid var(--focus);outline-offset:3px}
