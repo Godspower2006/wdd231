@@ -1,59 +1,136 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Artist Collective — Home</title>
-  <meta name="description" content="Artist Collective — exhibitions, artist spotlights and ways to join.">
+  <meta name="description" content="Artist Collective — exhibitions, artist spotlights, virtual tours, and ways to join our small gallery community.">
   <meta name="author" content="Andrew Godspower">
 
+  <!-- FAVICON: place a working favicon at images/favicon.ico -->
   <link rel="icon" href="images/favicon.ico">
 
+  <!-- Open Graph (replace YOUR_GITHUB_URL with your actual site URL, and ensure image exists at that absolute URL) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Artist Collective — Home">
+  <meta property="og:description" content="Exhibitions, artist spotlights and virtual tours from the Artist Collective. Join, attend events, and support local artists.">
+  <meta property="og:url" content="https://godspower2006.github.io/wdd231/finalproject/index.html">
+  <meta property="og:image" content="https://godspower2006.github.io/wdd231/finalproject/images/og-hero.webp">
+
+  <!-- Twitter/X card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Artist Collective — Home">
+  <meta name="twitter:description" content="Exhibitions, artist spotlights and virtual tours from the Artist Collective.">
+  <meta name="twitter:image" content="https://godspower2006.github.io/wdd231/finalproject/images/og-hero.webp">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles (small.css should contain the site-wide base styles; discover.css contains page-specific rules) -->
   <link rel="stylesheet" href="styles/small.css">
   <link rel="stylesheet" href="styles/discover.css">
 
-  <script type="module" src="scripts/main.js" defer></script>
+  <!-- Add large.css for desktop polish -->
+  <link rel="stylesheet" href="styles/large.css">
 </head>
-<body data-page="index">
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
   <header class="site-header" role="banner">
     <div class="header-inner">
-      <a class="logo" href="index.html" aria-label="Artist Collective Home">
+      <a class="logo" href="index.html" aria-label="Artist Collective home">
+        <!-- Replace with images/logo.png (optimized) -->
         <img src="images/logo.png" alt="Artist Collective logo" width="48" height="48">
       </a>
-      <h1 class="site-title">Artist Collective</h1>
+      <span class="site-title">Artist Collective</span>
+
+      <!-- hamburger for small screens (JS toggles .show on nav) -->
       <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">☰</button>
     </div>
 
     <nav id="nav-bar" class="navigation" role="navigation" aria-label="Main navigation">
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="join.html">Join</a></li>
+        <li><a href="siteplan.html">Site Plan</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main" class="page-main" role="main">
-    <section class="hero">
-      <img src="images/hero.webp" alt="Gallery interior" width="1200" height="480" loading="lazy">
-      <a class="hero-cta" href="join.html">Become a Member</a>
+    <!-- main page title (one h1 per page, must be inside main) -->
+    <h1>Artist Collective</h1>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <figure class="hero-media">
+        <!-- Replace images/hero.webp with an optimized webp sized ~1200×630 and <125KB if possible -->
+        <img src="images/hero.webp" alt="Gallery interior with visitors" width="1200" height="630" loading="lazy">
+        <figcaption class="visually-hidden">Hero image: gallery interior</figcaption>
+        <a class="hero-cta cta" href="join.html">Join the Collective</a>
+      </figure>
+
       <div class="hero-text">
-        <h2>Local exhibitions, artist spotlights and virtual tours</h2>
-        <p>Explore current exhibitions and discover the artists behind the work.</p>
+        <h2 id="hero-heading">Exhibitions • Artist Spotlights • Virtual Tours</h2>
+        <p class="lede">Discover upcoming shows, explore artist portfolios, and sign up for workshops. Our small gallery supports local artists through exhibitions and community programs.</p>
       </div>
     </section>
 
-    <section class="spotlights card" aria-labelledby="spot-head">
-      <h2 id="spot-head">Spotlight Works</h2>
-      <div id="spotlight-list" class="spotlight-list" aria-live="polite">
-        <!-- JS injects 2–3 featured items -->
+    <!-- Spotlight / featured -->
+    <section class="card spotlights" aria-labelledby="spotlights-heading">
+      <h2 id="spotlights-heading">Member Spotlights</h2>
+      <div class="spotlight-list">
+        <!-- Example spotlight (you'll generate these via JSON/JS for dynamic content) -->
+        <article class="spotlight art-card" tabindex="0">
+          <img src="images/artist1.webp" alt="Artist 1 artwork" width="420" height="280" loading="lazy">
+          <div class="spot-body">
+            <h3 class="spot-name"><a href="gallery.html#artist1">Artist One</a></h3>
+            <p class="small muted">Mixed media — Commissions available</p>
+          </div>
+        </article>
+
+        <article class="spotlight art-card" tabindex="0">
+          <img src="images/artist2.webp" alt="Artist 2 artwork" width="420" height="280" loading="lazy">
+          <div class="spot-body">
+            <h3 class="spot-name"><a href="gallery.html#artist2">Artist Two</a></h3>
+            <p class="small muted">Oil painting — Exhibiting this month</p>
+          </div>
+        </article>
       </div>
-      <p><a href="gallery.html">See the full gallery</a></p>
+
+      <p><a class="sm-link" href="gallery.html">Browse the full gallery</a></p>
+    </section>
+
+    <!-- Events card -->
+    <section class="card events" aria-labelledby="events-heading">
+      <h2 id="events-heading">Upcoming Events</h2>
+      <ul>
+        <li><strong>Opening Night:</strong> Fri, Oct 10 — 6:00pm</li>
+        <li><strong>Artist Talk:</strong> Wed, Nov 12 — 7:00pm</li>
+        <li><strong>Holiday Market:</strong> Sat, Dec 14 — 10:00am</li>
+      </ul>
+      <p><a class="sm-link" href="events.html">See all events</a></p>
     </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
+    <div class="contact">
+      <p>Artist Collective — 10 Art Lane, Alimosho</p>
+      <p>Email: godspowerandrew886@gmail.com • Phone: (234) 708-852-0985</p>
+    </div>
     <p>&copy; <span id="currentyear"></span> Artist Collective — Andrew Godspower</p>
   </footer>
+
+  <!-- scripts (navigation toggling / dynamic content) -->
+  <script src="scripts/navigation.js" defer></script>
+  <script>
+    // small inline helper only to set year (keeps console free)
+    document.addEventListener('DOMContentLoaded', () => {
+      const y = document.getElementById('currentyear'); if (y) y.textContent = new Date().getFullYear();
+    });
+  </script>
 </body>
 </html>
