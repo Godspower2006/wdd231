@@ -32,7 +32,8 @@
   <main id="main" class="page-main container" role="main">
     <h1>Membership Application</h1>
 
-    <form id="joinForm" method="get" action="thankyou.html" novalidate>
+    <!-- Form now submits to join.html (self) via GET so a form-action page exists using URLSearchParams -->
+    <form id="joinForm" method="get" action="join.html" novalidate>
       <label>First name
         <input name="first" title="First name" autocomplete="given-name" required type="text" />
       </label>
@@ -69,11 +70,21 @@
         <textarea name="description" title="Organization description" rows="4"></textarea>
       </label>
 
-      <!-- hidden timestamp -->
       <input type="hidden" id="ts" name="timestamp" />
 
       <input type="submit" value="Submit Application" id="submitBtn" />
     </form>
+
+    <!-- Display area for the form action (URLSearchParams) -->
+    <section id="formResult" class="card" aria-live="polite" style="display:none;">
+      <h2>Application Received</h2>
+      <p><strong>Name:</strong> <span id="res-name"></span></p>
+      <p><strong>Email:</strong> <span id="res-email"></span></p>
+      <p><strong>Phone:</strong> <span id="res-phone"></span></p>
+      <p><strong>Organization:</strong> <span id="res-org"></span></p>
+      <p><strong>Membership level:</strong> <span id="res-level"></span></p>
+      <p><strong>Submitted at:</strong> <span id="res-ts"></span></p>
+    </section>
 
     <section class="levels" aria-label="Membership levels">
       <div class="level-card" data-modal="modal-patron">
@@ -98,7 +109,6 @@
       </div>
     </section>
 
-    <!-- modals for levels -->
     <dialog id="modal-patron" class="membership-modal"><button class="close">❌</button><h2>Patron</h2><p>No fee. Newsletter and event invites.</p></dialog>
     <dialog id="modal-bronze" class="membership-modal"><button class="close">❌</button><h2>Bronze</h2><p>Basic listing, event invites, small promo.</p></dialog>
     <dialog id="modal-silver" class="membership-modal"><button class="close">❌</button><h2>Silver</h2><p>Spotlight on site, priority email.</p></dialog>
@@ -114,10 +124,24 @@
   <script src="scripts/navigation.js" defer></script>
   <script type="module" src="scripts/main.js" defer></script>
   <script>
-    document.addEventListener('DOMContentLoaded', ()=>{
-      const y=document.getElementById('currentyear'); if(y) y.textContent=new Date().getFullYear();
-      // set timestamp hidden field
-      const ts=document.getElementById('ts'); if(ts) ts.value = new Date().toISOString();
+    document.addEventListener('DOMContentLoaded', ()=> {
+      const y = document.getElementById('currentyear'); if(y) y.textContent = new Date().getFullYear();
+      const ts = document.getElementById('ts'); if(ts) ts.value = new Date().toISOString();
+
+      // Display submitted form values using URLSearchParams (form action page requirement)
+      const params = new URLSearchParams(window.location.search);
+      if ([...params].length > 0) {
+        const res = (name) => params.get(name) || '—';
+        document.getElementById('res-name').textContent = `${res('first')} ${res('last')}`;
+        document.getElementById('res-email').textContent = res('email');
+        document.getElementById('res-phone').textContent = res('phone');
+        document.getElementById('res-org').textContent = res('organization');
+        document.getElementById('res-level').textContent = res('level');
+        document.getElementById('res-ts').textContent = res('timestamp') || new Date().toISOString();
+        document.getElementById('formResult').style.display = 'block';
+        // Optionally hide the form itself so the action page looks like a confirmation
+        document.getElementById('joinForm').style.display = 'none';
+      }
     });
   </script>
 </body>

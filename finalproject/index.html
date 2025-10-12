@@ -7,28 +7,23 @@
   <meta name="description" content="Artist Collective — exhibitions, artist spotlights, virtual tours, and ways to join our small gallery community.">
   <meta name="author" content="Andrew Godspower">
 
-  <!-- Favicon: add images/favicon.ico -->
   <link rel="icon" href="images/favicon.ico">
 
-  <!-- Open Graph (update YOUR_GITHUB_URL to your published site URL if different) -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Artist Collective — Home">
   <meta property="og:description" content="Exhibitions, artist spotlights and virtual tours from the Artist Collective. Join, attend events, and support local artists.">
   <meta property="og:url" content="https://godspower2006.github.io/wdd231/finalproject/index.html">
   <meta property="og:image" content="https://godspower2006.github.io/wdd231/finalproject/images/og-hero.webp">
 
-  <!-- Twitter/X card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Artist Collective — Home">
   <meta name="twitter:description" content="Exhibitions, artist spotlights and virtual tours from the Artist Collective.">
   <meta name="twitter:image" content="https://godspower2006.github.io/wdd231/finalproject/images/og-hero.webp">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="styles/small.css">
   <link rel="stylesheet" href="styles/discover.css">
   <link rel="stylesheet" href="styles/large.css">
@@ -44,7 +39,6 @@
 
       <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">☰</button>
 
-      <!-- The visible title is in header for branding, but page heading lives in <main> -->
       <div class="branding">
         <span class="site-title">Artist Collective</span>
       </div>
@@ -55,19 +49,16 @@
         <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="join.html">Join</a></li>
-        <li><a href="siteplan.html">Site Plan</a></li>
+        <!-- siteplan removed -->
       </ul>
     </nav>
   </header>
 
   <main id="main" class="page-main container" role="main">
-    <!-- One H1, first element inside main (rubric requirement) -->
     <h1>Artist Collective</h1>
 
-    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-heading">
       <figure class="hero-media">
-        <!-- Replace these image files with optimized webp files in images/ -->
         <img src="images/hero.webp" alt="Gallery interior with visitors" width="1200" height="630" loading="lazy">
         <figcaption class="visually-hidden">Hero image: gallery interior</figcaption>
         <a class="hero-cta cta" href="join.html">Join the Collective</a>
@@ -79,11 +70,10 @@
       </div>
     </section>
 
-    <!-- Spotlight / featured -->
     <section class="card spotlights" aria-labelledby="spotlights-heading">
       <h2 id="spotlights-heading">Member Spotlights</h2>
-      <div class="spotlight-list discover-grid" aria-live="polite">
-        <!-- JS (scripts/main.js) will populate dynamic spotlights here from data/items.json -->
+      <!-- Added id discoverGrid so main.js finds it -->
+      <div id="discoverGrid" class="spotlight-list discover-grid" aria-live="polite">
         <article class="spotlight art-card" tabindex="0">
           <img src="images/artist1.webp" alt="Artwork by Artist One" width="420" height="280" loading="lazy">
           <div class="spot-body">
@@ -104,7 +94,6 @@
       <p><a class="sm-link" href="gallery.html">Browse the full gallery</a></p>
     </section>
 
-    <!-- Events card -->
     <section class="card events" aria-labelledby="events-heading">
       <h2 id="events-heading">Upcoming Events</h2>
       <ul>
@@ -127,12 +116,10 @@
     </div>
   </footer>
 
-  <!-- Scripts: navigation toggling + dynamic content (deferred) -->
   <script src="scripts/navigation.js" defer></script>
   <script type="module" src="scripts/main.js" defer></script>
 
   <script>
-    // tiny helper to set year - minimal inline JS (acceptable)
     document.addEventListener('DOMContentLoaded', () => {
       const y = document.getElementById('currentyear');
       if (y) y.textContent = new Date().getFullYear();

@@ -1,0 +1,6 @@
+[
+  {"name":"Local Studio A","address":"12 Art Lane, Alimosho","image":"images/studio1.webp","description":"Open studio Sundays; rotating exhibits."},
+  {"name":"Riverside Mural","address":"Riverside Walk","image":"images/mural1.webp","description":"Community mural project with workshops."},
+  {"name":"Workshop Hub","address":"20 Market Road","image":"images/workshop1.webp","description":"Monthly printmaking and collage classes."},
+  {"name":"Small Gallery B","address":"5 Gallery Row","image":"images/gallery2.webp","description":"Emerging artists exhibitions and talks."}
+]

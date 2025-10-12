@@ -1,4 +1,3 @@
-// scripts/navigation.js
 document.addEventListener('DOMContentLoaded', () => {
   const navButton = document.getElementById('nav-button');
   const navBar = document.getElementById('nav-bar');
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     navButton.setAttribute('aria-expanded', shown ? 'true' : 'false');
   });
 
-  // close when pressing Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navBar.classList.contains('show')) {
       navBar.classList.remove('show');
@@ -19,13 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // wayfinding: mark the current link
+  // wayfinding: set aria-current for current link
   const navLinks = navBar.querySelectorAll('a');
-  const current = window.location.pathname.split('/').pop();
+  const current = window.location.pathname.split('/').pop() || 'index.html';
   navLinks.forEach(link => {
     const href = (link.getAttribute('href') || '').split('/').pop();
-    if (href === current) {
+    if (href === current || (href === '' && current === 'index.html')) {
       link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
     }
   });
 });

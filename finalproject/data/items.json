@@ -1,0 +1,17 @@
+[
+  {"id":1,"image":"images/artist1.webp","title":"Sunset Forms","artist":"Artist One","year":2020,"category":"Mixed Media","price":"₦25,000","description":"Vibrant layers exploring light and texture."},
+  {"id":2,"image":"images/artist2.webp","title":"Quiet Harbor","artist":"Artist Two","year":2019,"category":"Oil","price":"₦40,000","description":"A contemplative seascape in warm tones."},
+  {"id":3,"image":"images/artist3.webp","title":"Urban Threads","artist":"Artist Three","year":2021,"category":"Textile","price":"₦18,500","description":"Hand-stitched patterns inspired by city grids."},
+  {"id":4,"image":"images/artist4.webp","title":"Monochrome Study","artist":"Artist Four","year":2018,"category":"Photography","price":"₦12,000","description":"High contrast black & white photography."},
+  {"id":5,"image":"images/artist5.webp","title":"Golden Hour","artist":"Artist Five","year":2022,"category":"Acrylic","price":"₦30,000","description":"Layered brushwork with warm accents."},
+  {"id":6,"image":"images/artist6.webp","title":"Ceramic Bloom","artist":"Artist Six","year":2017,"category":"Ceramics","price":"₦22,000","description":"Hand-thrown ceramics with organic glazes."},
+  {"id":7,"image":"images/artist7.webp","title":"Rhythms","artist":"Artist Seven","year":2021,"category":"Sound Art","price":"Contact for price","description":"A sonic installation exploring ritual."},
+  {"id":8,"image":"images/artist8.webp","title":"Blue Geometry","artist":"Artist Eight","year":2020,"category":"Print","price":"₦16,000","description":"Screen prints referencing architecture."},
+  {"id":9,"image":"images/artist9.webp","title":"Portrait of a City","artist":"Artist Nine","year":2016,"category":"Mixed Media","price":"₦27,500","description":"Fragments of map and memory combined."},
+  {"id":10,"image":"images/artist10.webp","title":"Quiet Bloom","artist":"Artist Ten","year":2023,"category":"Watercolor","price":"₦9,000","description":"Delicate botanical studies."},
+  {"id":11,"image":"images/artist11.webp","title":"Motion Study","artist":"Artist Eleven","year":2015,"category":"Video","price":"Contact for price","description":"Experimental moving-image work."},
+  {"id":12,"image":"images/artist12.webp","title":"Fragments","artist":"Artist Twelve","year":2019,"category":"Collage","price":"₦14,500","description":"Cut and reassembled paper narratives."},
+  {"id":13,"image":"images/artist13.webp","title":"Light Vessel","artist":"Artist Thirteen","year":2022,"category":"Glass","price":"₦45,000","description":"Blown glass sculptures with layered color."},
+  {"id":14,"image":"images/artist14.webp","title":"Field Notes","artist":"Artist Fourteen","year":2018,"category":"Drawing","price":"₦8,750","description":"Pen and ink observational drawings."},
+  {"id":15,"image":"images/artist15.webp","title":"Threshold","artist":"Artist Fifteen","year":2020,"category":"Installation","price":"Contact for price","description":"Site-specific works exploring passage."}
+]

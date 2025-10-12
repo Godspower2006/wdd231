@@ -1,4 +1,4 @@
-
+// scripts/main.js
 const fetchJson = async (url) => {
   try {
     const res = await fetch(url);
@@ -10,11 +10,7 @@ const fetchJson = async (url) => {
   }
 };
 
-const galleryContainer = document.getElementById('gallery');
-const discoverContainer = document.getElementById('discoverGrid');
-const dialog = document.getElementById('detailDialog');
-
-function createGalleryCard(item) {
+function createGalleryCard(item, showDetailFn) {
   const article = document.createElement('article');
   article.className = 'art-card';
   article.tabIndex = 0;
@@ -28,51 +24,54 @@ function createGalleryCard(item) {
       </figcaption>
     </figure>
   `;
-  article.addEventListener('click', () => showDetail(item));
-  article.addEventListener('keydown', (e) => { if (e.key === 'Enter') showDetail(item); });
+  article.addEventListener('click', () => showDetailFn(item));
+  article.addEventListener('keydown', (e) => { if (e.key === 'Enter') showDetailFn(item); });
   return article;
 }
 
-function showDetail(item) {
-  if (!dialog) return;
-  dialog.innerHTML = '';
-  dialog.innerHTML = `
-    <button id="closeDialog" class="close">❌</button>
-    <div class="dialog-body">
-      <figure>
-        <img src="${item.image}" alt="${item.title} by ${item.artist}" width="640" height="420" loading="lazy">
-        <figcaption>
-          <h2 id="dialogTitle">${item.title}</h2>
-          <p><strong>Artist:</strong> ${item.artist}</p>
-          <p><strong>Year:</strong> ${item.year}</p>
-          <p><strong>Category:</strong> ${item.category}</p>
-          <p>${item.description}</p>
-          <p><strong>Price:</strong> ${item.price}</p>
-        </figcaption>
-      </figure>
-    </div>
-  `;
-  const closeBtn = document.getElementById('closeDialog');
-  closeBtn.focus();
-  closeBtn.addEventListener('click', () => dialog.close());
-  // close when clicking backdrop
-  dialog.addEventListener('click', (ev) => {
-    if (ev.target === dialog) dialog.close();
-  }, { once: true });
-  dialog.showModal();
+function makeShowDetail(dialog) {
+  return function showDetail(item) {
+    if (!dialog) return;
+    dialog.innerHTML = '';
+    dialog.innerHTML = `
+      <button id="closeDialog" class="close">❌</button>
+      <div class="dialog-body">
+        <figure>
+          <img src="${item.image}" alt="${item.title} by ${item.artist}" width="640" height="420" loading="lazy">
+          <figcaption>
+            <h2 id="dialogTitle">${item.title}</h2>
+            <p><strong>Artist:</strong> ${item.artist}</p>
+            <p><strong>Year:</strong> ${item.year}</p>
+            <p><strong>Category:</strong> ${item.category}</p>
+            <p>${item.description}</p>
+            <p><strong>Price:</strong> ${item.price}</p>
+          </figcaption>
+        </figure>
+      </div>
+    `;
+    const closeBtn = document.getElementById('closeDialog');
+    if (closeBtn) {
+      closeBtn.focus();
+      closeBtn.addEventListener('click', () => dialog.close());
+    }
+    dialog.addEventListener('click', (ev) => {
+      if (ev.target === dialog) dialog.close();
+    }, { once: true });
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else dialog.style.display = 'block';
+  };
 }
 
-async function buildGallery() {
+async function buildGallery(galleryContainer, dialog) {
   if (!galleryContainer) return;
   const items = await fetchJson('data/items.json');
   if (!items) { galleryContainer.innerHTML = '<p class="error">Unable to load gallery.</p>'; return; }
-  // ensure we display at least 15 items (requirement)
   const list = items.slice(0, 15);
   galleryContainer.innerHTML = '';
-  list.forEach(i => galleryContainer.appendChild(createGalleryCard(i)));
+  const showDetail = makeShowDetail(dialog);
+  list.forEach(i => galleryContainer.appendChild(createGalleryCard(i, showDetail)));
 }
 
-// discover page builder with grid-template-areas support
 function createDiscoverCard(place) {
   const article = document.createElement('article');
   article.className = 'place-card';
@@ -90,13 +89,12 @@ function createDiscoverCard(place) {
   return article;
 }
 
-async function buildDiscover() {
+async function buildDiscover(discoverContainer) {
   if (!discoverContainer) return;
   const places = await fetchJson('data/discover.json');
   if (!places) { discoverContainer.innerHTML = '<p class="error">Unable to load discover data.</p>'; return; }
   discoverContainer.innerHTML = '';
   places.forEach(p => discoverContainer.appendChild(createDiscoverCard(p)));
-  // visitor message via localStorage
   displayVisitMessage();
 }
 
@@ -122,7 +120,6 @@ function displayVisitMessage() {
   localStorage.setItem(key, String(now));
 }
 
-// membership modals (join page)
 function initMembershipModals() {
   const openers = document.querySelectorAll('[data-modal-open]');
   openers.forEach(btn => {
@@ -140,12 +137,13 @@ function initMembershipModals() {
   });
 }
 
-// initialize everything depending on page
 document.addEventListener('DOMContentLoaded', async () => {
-  // gallery page
-  await buildGallery();
-  // discover page
-  await buildDiscover();
-  // membership modals
+  // Grab elements after DOM ready (works across pages)
+  const galleryContainer = document.getElementById('gallery');
+  const discoverContainer = document.getElementById('discoverGrid'); // matches index.html
+  const dialog = document.getElementById('detailDialog') || document.getElementById('detailDialog') || document.getElementById('detailDialog'); // safe get
+
+  await buildGallery(galleryContainer, dialog);
+  await buildDiscover(discoverContainer);
   initMembershipModals();
 });
