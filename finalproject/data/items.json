@@ -1,0 +1,17 @@
+[
+  {"id":1,"title":"Blue Harbor","artist":"A. Bello","category":"Painting","year":2022,"image":"images/item1.webp","price":"$450","description":"Large oil on canvas, seascape."},
+  {"id":2,"title":"Quiet Alley","artist":"M. Chen","category":"Photography","year":2021,"image":"images/item2.webp","price":"$200","description":"35mm film street photography."},
+  {"id":3,"title":"Paper Garden","artist":"S. Ibra","category":"Mixed Media","year":2023,"image":"images/item3.webp","price":"$320","description":"Collage and ink."},
+  {"id":4,"title":"Red Chair","artist":"K. Oyelade","category":"Sculpture","year":2019,"image":"images/item4.webp","price":"$800","description":"Reclaimed wood and metal."},
+  {"id":5,"title":"Sunrise Study","artist":"A. Bello","category":"Painting","year":2020,"image":"images/item5.webp","price":"$400","description":"Acrylic on panel."},
+  {"id":6,"title":"Tidal Steps","artist":"M. Chen","category":"Photography","year":2022,"image":"images/item6.webp","price":"$250","description":"Long exposure coastal scene."},
+  {"id":7,"title":"Threaded Memory","artist":"S. Ibra","category":"Textile","year":2021,"image":"images/item7.webp","price":"$360","description":"Hand-stitched tapestry."},
+  {"id":8,"title":"Monument","artist":"K. Oyelade","category":"Sculpture","year":2020,"image":"images/item8.webp","price":"$1200","description":"Bronze casting."},
+  {"id":9,"title":"Evening Market","artist":"L. Gomez","category":"Painting","year":2022,"image":"images/item9.webp","price":"$380","description":"Watercolor on paper."},
+  {"id":10,"title":"Window Light","artist":"L. Gomez","category":"Photography","year":2018,"image":"images/item10.webp","price":"$180","description":"Digital print."},
+  {"id":11,"title":"Concrete Bloom","artist":"N. Park","category":"Installation","year":2023,"image":"images/item11.webp","price":"$0","description":"Site-specific installation."},
+  {"id":12,"title":"Last Train","artist":"J. Silva","category":"Photography","year":2021,"image":"images/item12.webp","price":"$220","description":"Urban night photography."},
+  {"id":13,"title":"Quiet Desk","artist":"A. Bello","category":"Drawing","year":2017,"image":"images/item13.webp","price":"$95","description":"Charcoal study."},
+  {"id":14,"title":"Velvet Night","artist":"M. Chen","category":"Painting","year":2019,"image":"images/item14.webp","price":"$410","description":"Oil on canvas."},
+  {"id":15,"title":"Paper Flight","artist":"S. Ibra","category":"Sculpture","year":2022,"image":"images/item15.webp","price":"$500","description":"Paper and wire sculpture."}
+]

@@ -7,10 +7,10 @@
   <meta name="description" content="Artist Collective — exhibitions, artist spotlights, virtual tours, and ways to join our small gallery community.">
   <meta name="author" content="Andrew Godspower">
 
-  <!-- FAVICON: place a working favicon at images/favicon.ico -->
+  <!-- Favicon: add images/favicon.ico -->
   <link rel="icon" href="images/favicon.ico">
 
-  <!-- Open Graph (replace YOUR_GITHUB_URL with your actual site URL, and ensure image exists at that absolute URL) -->
+  <!-- Open Graph (update YOUR_GITHUB_URL to your published site URL if different) -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Artist Collective — Home">
   <meta property="og:description" content="Exhibitions, artist spotlights and virtual tours from the Artist Collective. Join, attend events, and support local artists.">
@@ -28,29 +28,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- Styles (small.css should contain the site-wide base styles; discover.css contains page-specific rules) -->
+  <!-- Styles -->
   <link rel="stylesheet" href="styles/small.css">
   <link rel="stylesheet" href="styles/discover.css">
-
-  <!-- Add large.css for desktop polish -->
   <link rel="stylesheet" href="styles/large.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header class="site-header" role="banner">
-    <div class="header-inner">
+    <div class="header-inner container">
       <a class="logo" href="index.html" aria-label="Artist Collective home">
-        <!-- Replace with images/logo.png (optimized) -->
         <img src="images/logo.png" alt="Artist Collective logo" width="48" height="48">
       </a>
-      <span class="site-title">Artist Collective</span>
 
-      <!-- hamburger for small screens (JS toggles .show on nav) -->
       <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+
+      <!-- The visible title is in header for branding, but page heading lives in <main> -->
+      <div class="branding">
+        <span class="site-title">Artist Collective</span>
+      </div>
     </div>
 
-    <nav id="nav-bar" class="navigation" role="navigation" aria-label="Main navigation">
+    <nav id="nav-bar" class="navigation container" role="navigation" aria-label="Main navigation">
       <ul>
         <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
@@ -60,14 +60,14 @@
     </nav>
   </header>
 
-  <main id="main" class="page-main" role="main">
-    <!-- main page title (one h1 per page, must be inside main) -->
+  <main id="main" class="page-main container" role="main">
+    <!-- One H1, first element inside main (rubric requirement) -->
     <h1>Artist Collective</h1>
 
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-heading">
       <figure class="hero-media">
-        <!-- Replace images/hero.webp with an optimized webp sized ~1200×630 and <125KB if possible -->
+        <!-- Replace these image files with optimized webp files in images/ -->
         <img src="images/hero.webp" alt="Gallery interior with visitors" width="1200" height="630" loading="lazy">
         <figcaption class="visually-hidden">Hero image: gallery interior</figcaption>
         <a class="hero-cta cta" href="join.html">Join the Collective</a>
@@ -75,17 +75,17 @@
 
       <div class="hero-text">
         <h2 id="hero-heading">Exhibitions • Artist Spotlights • Virtual Tours</h2>
-        <p class="lede">Discover upcoming shows, explore artist portfolios, and sign up for workshops. Our small gallery supports local artists through exhibitions and community programs.</p>
+        <p class="lede">Discover upcoming shows, explore artist portfolios, and sign up for workshops. Our small gallery supports local artists through exhibitions, education, and community programs.</p>
       </div>
     </section>
 
     <!-- Spotlight / featured -->
     <section class="card spotlights" aria-labelledby="spotlights-heading">
       <h2 id="spotlights-heading">Member Spotlights</h2>
-      <div class="spotlight-list">
-        <!-- Example spotlight (you'll generate these via JSON/JS for dynamic content) -->
+      <div class="spotlight-list discover-grid" aria-live="polite">
+        <!-- JS (scripts/main.js) will populate dynamic spotlights here from data/items.json -->
         <article class="spotlight art-card" tabindex="0">
-          <img src="images/artist1.webp" alt="Artist 1 artwork" width="420" height="280" loading="lazy">
+          <img src="images/artist1.webp" alt="Artwork by Artist One" width="420" height="280" loading="lazy">
           <div class="spot-body">
             <h3 class="spot-name"><a href="gallery.html#artist1">Artist One</a></h3>
             <p class="small muted">Mixed media — Commissions available</p>
@@ -93,7 +93,7 @@
         </article>
 
         <article class="spotlight art-card" tabindex="0">
-          <img src="images/artist2.webp" alt="Artist 2 artwork" width="420" height="280" loading="lazy">
+          <img src="images/artist2.webp" alt="Artwork by Artist Two" width="420" height="280" loading="lazy">
           <div class="spot-body">
             <h3 class="spot-name"><a href="gallery.html#artist2">Artist Two</a></h3>
             <p class="small muted">Oil painting — Exhibiting this month</p>
@@ -117,19 +117,25 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <div class="contact">
+    <div class="container contact">
       <p>Artist Collective — 10 Art Lane, Alimosho</p>
       <p>Email: godspowerandrew886@gmail.com • Phone: (234) 708-852-0985</p>
     </div>
-    <p>&copy; <span id="currentyear"></span> Artist Collective — Andrew Godspower</p>
+
+    <div class="container">
+      <p>&copy; <span id="currentyear"></span> Artist Collective — Andrew Godspower</p>
+    </div>
   </footer>
 
-  <!-- scripts (navigation toggling / dynamic content) -->
+  <!-- Scripts: navigation toggling + dynamic content (deferred) -->
   <script src="scripts/navigation.js" defer></script>
+  <script type="module" src="scripts/main.js" defer></script>
+
   <script>
-    // small inline helper only to set year (keeps console free)
+    // tiny helper to set year - minimal inline JS (acceptable)
     document.addEventListener('DOMContentLoaded', () => {
-      const y = document.getElementById('currentyear'); if (y) y.textContent = new Date().getFullYear();
+      const y = document.getElementById('currentyear');
+      if (y) y.textContent = new Date().getFullYear();
     });
   </script>
 </body>

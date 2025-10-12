@@ -1,128 +1,124 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Artist Collective — Join</title>
-  <meta name="description" content="Apply to join the Artist Collective.">
+  <meta name="description" content="Apply to join Artist Collective — membership form for artists and patrons.">
   <meta name="author" content="Andrew Godspower">
-
   <link rel="icon" href="images/favicon.ico">
 
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/small.css">
-  <link rel="stylesheet" href="styles/discover.css">
-
-  <script type="module" src="scripts/main.js" defer></script>
+  <link rel="stylesheet" href="styles/large.css">
 </head>
-<body data-page="join">
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a class="logo" href="index.html" aria-label="Artist Collective Home">
-        <img src="images/logo.png" alt="Artist Collective logo" width="48" height="48">
-      </a>
-      <h1 class="site-title">Artist Collective — Join</h1>
+    <div class="header-inner container">
+      <a class="logo" href="index.html" aria-label="Artist Collective home"><img src="images/logo.png" alt="Artist Collective logo" width="48" height="48"></a>
       <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+      <nav id="nav-bar" class="navigation" role="navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="discover.html">Discover</a></li>
+          <li><a href="join.html" aria-current="page">Join</a></li>
+        </ul>
+      </nav>
     </div>
-
-    <nav id="nav-bar" class="navigation" role="navigation" aria-label="Main navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="join.html">Join</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <main id="main" class="page-main" role="main">
-    <section class="card form-card" aria-labelledby="join-heading">
-      <h2 id="join-heading">Membership Application</h2>
+  <main id="main" class="page-main container" role="main">
+    <h1>Membership Application</h1>
 
-      <form id="joinForm" action="thankyou.html" method="get" novalidate>
-        <label>First name
-          <input name="first" type="text" title="First name" autocomplete="given-name" required>
-        </label>
+    <form id="joinForm" method="get" action="thankyou.html" novalidate>
+      <label>First name
+        <input name="first" title="First name" autocomplete="given-name" required type="text" />
+      </label>
 
-        <label>Last name
-          <input name="last" type="text" title="Last name" autocomplete="family-name" required>
-        </label>
+      <label>Last name
+        <input name="last" title="Last name" autocomplete="family-name" required type="text" />
+      </label>
 
-        <label>Organization title
-          <input name="title" type="text" title="Organization title — letters, spaces, hyphens only (min 7)"
-                 autocomplete="organization-title" pattern="^[A-Za-z\s-]{7,}$" required>
-        </label>
+      <label>Organization title
+        <input name="title" title="Organization title" autocomplete="organization-title" pattern="[A-Za-z\s\-]{7,}" placeholder="Gallery Director" />
+      </label>
 
-        <label>Email
-          <input name="email" type="email" title="Email address" autocomplete="email" placeholder="you@example.com" required>
-        </label>
+      <label>Email
+        <input name="email" title="Email address" autocomplete="email" required type="email" placeholder="name@example.com" />
+      </label>
 
-        <label>Mobile phone
-          <input name="phone" type="tel" title="Mobile phone" autocomplete="tel" required>
-        </label>
+      <label>Mobile phone
+        <input name="phone" title="Mobile phone" autocomplete="tel" required type="tel" />
+      </label>
 
-        <label>Business / Organization
-          <input name="business" type="text" title="Business name" autocomplete="organization" required>
-        </label>
+      <label>Organization / Business name
+        <input name="organization" title="Organization name" autocomplete="organization" required type="text" />
+      </label>
 
-        <label>Membership Level
-          <select name="level" title="Choose membership level" required>
-            <option value="np">NP (No fee)</option>
-            <option value="bronze">Bronze</option>
-            <option value="silver">Silver</option>
-            <option value="gold">Gold</option>
-          </select>
-        </label>
+      <fieldset>
+        <legend>Membership level</legend>
+        <label><input type="radio" name="level" value="patron" checked> Patron (no fee)</label>
+        <label><input type="radio" name="level" value="bronze"> Bronze</label>
+        <label><input type="radio" name="level" value="silver"> Silver</label>
+        <label><input type="radio" name="level" value="gold"> Gold</label>
+      </fieldset>
 
-        <label>Organization description
-          <textarea name="description" title="Business description" rows="4"></textarea>
-        </label>
+      <label>Organization description
+        <textarea name="description" title="Organization description" rows="4"></textarea>
+      </label>
 
-        <input type="hidden" name="timestamp" id="timestampHidden">
+      <!-- hidden timestamp -->
+      <input type="hidden" id="ts" name="timestamp" />
 
-        <input type="submit" value="Submit Application">
-      </form>
+      <input type="submit" value="Submit Application" id="submitBtn" />
+    </form>
+
+    <section class="levels" aria-label="Membership levels">
+      <div class="level-card" data-modal="modal-patron">
+        <h3>Patron</h3>
+        <p>Supporters — free membership.</p>
+        <a href="#" class="info-link" data-modal-open="modal-patron">More info</a>
+      </div>
+      <div class="level-card" data-modal="modal-bronze">
+        <h3>Bronze</h3>
+        <p>Basic listing & event invites.</p>
+        <a href="#" class="info-link" data-modal-open="modal-bronze">More info</a>
+      </div>
+      <div class="level-card" data-modal="modal-silver">
+        <h3>Silver</h3>
+        <p>Featured spotlight and small ads.</p>
+        <a href="#" class="info-link" data-modal-open="modal-silver">More info</a>
+      </div>
+      <div class="level-card" data-modal="modal-gold">
+        <h3>Gold</h3>
+        <p>Premium promo, priority events.</p>
+        <a href="#" class="info-link" data-modal-open="modal-gold">More info</a>
+      </div>
     </section>
 
-    <aside class="card membership-cards" aria-labelledby="levels-heading">
-      <h2 id="levels-heading">Membership Levels</h2>
-
-      <div class="levels">
-        <div class="level-card animate" data-level="np">
-          <h3>Non-Profit (NP)</h3>
-          <p>For non-profit organizations. No fee.</p>
-          <button class="open-level" data-level="np">Benefits</button>
-        </div>
-
-        <div class="level-card animate" data-level="bronze">
-          <h3>Bronze</h3>
-          <p>Basic listing & event access.</p>
-          <button class="open-level" data-level="bronze">Benefits</button>
-        </div>
-
-        <div class="level-card animate" data-level="silver">
-          <h3>Silver</h3>
-          <p>Spotlight feature & event discounts.</p>
-          <button class="open-level" data-level="silver">Benefits</button>
-        </div>
-
-        <div class="level-card animate" data-level="gold">
-          <h3>Gold</h3>
-          <p>Top promotion & premium spotlights.</p>
-          <button class="open-level" data-level="gold">Benefits</button>
-        </div>
-      </div>
-
-      <p class="muted">Cards animate on initial load; click "Benefits" to learn more.</p>
-
-      <!-- One dialog reused for membership details -->
-      <dialog id="levelDialog" aria-modal="true" aria-labelledby="levelTitle">
-        <button id="closeLevelDialog" aria-label="Close">❌</button>
-        <div id="levelContent"></div>
-      </dialog>
-    </aside>
+    <!-- modals for levels -->
+    <dialog id="modal-patron" class="membership-modal"><button class="close">❌</button><h2>Patron</h2><p>No fee. Newsletter and event invites.</p></dialog>
+    <dialog id="modal-bronze" class="membership-modal"><button class="close">❌</button><h2>Bronze</h2><p>Basic listing, event invites, small promo.</p></dialog>
+    <dialog id="modal-silver" class="membership-modal"><button class="close">❌</button><h2>Silver</h2><p>Spotlight on site, priority email.</p></dialog>
+    <dialog id="modal-gold" class="membership-modal"><button class="close">❌</button><h2>Gold</h2><p>Homepage spotlight, featured events and ad spots.</p></dialog>
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <p>&copy; <span id="currentyear"></span> Artist Collective — Andrew Godspower</p>
+    <div class="container">
+      <p>&copy; <span id="currentyear"></span> Artist Collective — Andrew Godspower</p>
+    </div>
   </footer>
+
+  <script src="scripts/navigation.js" defer></script>
+  <script type="module" src="scripts/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const y=document.getElementById('currentyear'); if(y) y.textContent=new Date().getFullYear();
+      // set timestamp hidden field
+      const ts=document.getElementById('ts'); if(ts) ts.value = new Date().toISOString();
+    });
+  </script>
 </body>
 </html>

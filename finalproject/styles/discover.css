@@ -1,76 +1,46 @@
-/* typography and cards */
-h1,h2,h3{font-family:var(--heading-font);color:var(--accent);margin:0 0 .5rem 0}
-.art-card{display:block;border-radius:8px;background:var(--card);border:1px solid var(--wire);overflow:hidden}
-.art-card figure{margin:0}
-.card-body{padding:.6rem}
-
-/* grid template areas for gallery page */
-.discover-grid .grid-area{
-  display:grid;
-  gap:1rem;
-  grid-template-columns:1fr;
-  grid-template-areas:
-    "hero"
-    "list";
-}
-
-/* actual gallery grid */
-#gallery-list{
-  display:grid;
+/* styles/discover.css */
+.discover-grid {
+  display: grid;
+  gap: 1rem;
   grid-template-columns: 1fr;
-  gap:1rem;
+  grid-auto-rows: auto;
 }
 
-/* responsive breakpoints */
+/* for medium screens use two-column layout */
 @media (min-width:641px) {
-  .navigation{display:block}
-  .navigation ul{flex-direction:row;gap:1rem}
-  /* gallery multi-column */
-  #gallery-list{
+  .discover-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* large: present a more interesting grid, named areas not strictly necessary but demonstrate technique */
 @media (min-width:1025px) {
-  /* larger gallery layout with named areas - example of grid-template-areas usage */
-  .discover-grid .grid-area{
-    grid-template-columns: 2fr 1fr;
+  .discover-grid {
+    grid-template-columns: 2fr 1fr 1fr;
     grid-template-areas:
-      "list side";
+      "hero hero hero"
+      "a b c"
+      "d e f"
+      "g h .";
   }
-  #gallery-list{
-    grid-column: 1 / 2;
-    grid-template-columns: repeat(3, 1fr);
-    gap:1rem;
+  /* map cards to named areas using nth-child (simpler than adding area classes) */
+  .discover-grid > :nth-child(1){grid-area:a}
+  .discover-grid > :nth-child(2){grid-area:b}
+  .discover-grid > :nth-child(3){grid-area:c}
+  .discover-grid > :nth-child(4){grid-area:d}
+  .discover-grid > :nth-child(5){grid-area:e}
+  .discover-grid > :nth-child(6){grid-area:f}
+  .discover-grid > :nth-child(7){grid-area:g}
+  .discover-grid > :nth-child(8){grid-area:h}
+}
+
+/* image hover effect for larger screens only */
+@media (min-width:641px) {
+  .place-figure img {
+    transition: transform 0.35s ease, filter 0.35s ease;
   }
-
-  .membership-cards { position: sticky; top: 1rem; }
+  .place-figure:hover img {
+    transform: scale(1.03) translateY(-3px);
+    filter: saturate(1.05) contrast(1.02);
+  }
 }
-
-/* dialog styling */
-dialog{
-  border:none;
-  border-radius:8px;
-  padding:1rem;
-  width:clamp(280px, 60vw, 800px);
-  max-width:95%;
-}
-dialog::backdrop{background:rgb(0 0 0 / 0.45)}
-
-/* form layout */
-.form-card label{display:block;margin-bottom:.6rem}
-.form-card input[type="text"], .form-card input[type="email"], .form-card input[type="tel"], .form-card textarea, .form-card select{
-  width:100%;padding:.5rem;border:1px solid var(--wire);border-radius:6px;margin-top:.25rem
-}
-
-/* membership level initial animation */
-@keyframes popIn {
-  from { transform: translateY(12px); opacity:0 }
-  to { transform: translateY(0); opacity:1 }
-}
-.level-card.animate{animation: popIn 600ms ease forwards}
-.levels{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
-@media (max-width:640px){ .levels{grid-template-columns:1fr} }
-
-/* accessibility focus */
-:focus{outline:3px solid var(--focus);outline-offset:3px}
