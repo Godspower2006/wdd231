@@ -6,9 +6,9 @@
   <title>Artist Collective — Home</title>
   <meta name="description" content="Artist Collective — exhibitions, artist spotlights, virtual tours, and ways to join our small gallery community.">
   <meta name="author" content="Andrew Godspower">
-
   <link rel="icon" href="images/favicon.ico">
 
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Artist Collective — Home">
   <meta property="og:description" content="Exhibitions, artist spotlights and virtual tours from the Artist Collective. Join, attend events, and support local artists.">
@@ -20,18 +20,21 @@
   <meta name="twitter:description" content="Exhibitions, artist spotlights and virtual tours from the Artist Collective.">
   <meta name="twitter:image" content="https://godspower2006.github.io/wdd231/finalproject/images/og-hero.webp">
 
+  <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="styles/small.css">
   <link rel="stylesheet" href="styles/discover.css">
   <link rel="stylesheet" href="styles/large.css">
+
+  <!-- canonical -->
+  <link rel="canonical" href="https://godspower2006.github.io/wdd231/finalproject/index.html">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <header class="site-header" role="banner">
+  <header class="site-header">
     <div class="header-inner container">
       <a class="logo" href="index.html" aria-label="Artist Collective home">
         <img src="images/logo.png" alt="Artist Collective logo" width="48" height="48">
@@ -44,24 +47,24 @@
       </div>
     </div>
 
-    <nav id="nav-bar" class="navigation container" role="navigation" aria-label="Main navigation">
+    <nav id="nav-bar" class="navigation container" aria-label="Main navigation">
       <ul>
         <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="join.html">Join</a></li>
-        <!-- siteplan removed -->
       </ul>
     </nav>
   </header>
 
-  <main id="main" class="page-main container" role="main">
+  <main id="main" class="page-main container">
     <h1>Artist Collective</h1>
 
     <section class="hero" aria-labelledby="hero-heading">
       <figure class="hero-media">
         <img src="images/hero.webp" alt="Gallery interior with visitors" width="1200" height="630" loading="lazy">
-        <figcaption class="visually-hidden">Hero image: gallery interior</figcaption>
         <a class="hero-cta cta" href="join.html">Join the Collective</a>
+        <!-- figcaption must be first or last child — placed last -->
+        <figcaption class="visually-hidden">Hero image: gallery interior</figcaption>
       </figure>
 
       <div class="hero-text">
@@ -72,7 +75,8 @@
 
     <section class="card spotlights" aria-labelledby="spotlights-heading">
       <h2 id="spotlights-heading">Member Spotlights</h2>
-      <!-- Added id discoverGrid so main.js finds it -->
+
+      <!-- discoverGrid id used by scripts/main.js -->
       <div id="discoverGrid" class="spotlight-list discover-grid" aria-live="polite">
         <article class="spotlight art-card" tabindex="0">
           <img src="images/artist1.webp" alt="Artwork by Artist One" width="420" height="280" loading="lazy">
@@ -105,7 +109,7 @@
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="container contact">
       <p>Artist Collective — 10 Art Lane, Alimosho</p>
       <p>Email: godspowerandrew886@gmail.com • Phone: (234) 708-852-0985</p>
@@ -116,14 +120,9 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="scripts/navigation.js" defer></script>
-  <script type="module" src="scripts/main.js" defer></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const y = document.getElementById('currentyear');
-      if (y) y.textContent = new Date().getFullYear();
-    });
-  </script>
+  <script src="scripts/init.js" defer></script>
+  <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

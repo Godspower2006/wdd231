@@ -11,14 +11,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/small.css">
   <link rel="stylesheet" href="styles/large.css">
+  <link rel="canonical" href="https://godspower2006.github.io/wdd231/finalproject/join.html">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  <header class="site-header" role="banner">
+  <header class="site-header">
     <div class="header-inner container">
       <a class="logo" href="index.html" aria-label="Artist Collective home"><img src="images/logo.png" alt="Artist Collective logo" width="48" height="48"></a>
       <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">☰</button>
-      <nav id="nav-bar" class="navigation" role="navigation">
+      <nav id="nav-bar" class="navigation" aria-label="Main navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="gallery.html">Gallery</a></li>
@@ -29,10 +30,9 @@
     </div>
   </header>
 
-  <main id="main" class="page-main container" role="main">
+  <main id="main" class="page-main container">
     <h1>Membership Application</h1>
 
-    <!-- Form now submits to join.html (self) via GET so a form-action page exists using URLSearchParams -->
     <form id="joinForm" method="get" action="join.html" novalidate>
       <label>First name
         <input name="first" title="First name" autocomplete="given-name" required type="text" />
@@ -75,7 +75,6 @@
       <input type="submit" value="Submit Application" id="submitBtn" />
     </form>
 
-    <!-- Display area for the form action (URLSearchParams) -->
     <section id="formResult" class="card" aria-live="polite" style="display:none;">
       <h2>Application Received</h2>
       <p><strong>Name:</strong> <span id="res-name"></span></p>
@@ -115,34 +114,14 @@
     <dialog id="modal-gold" class="membership-modal"><button class="close">❌</button><h2>Gold</h2><p>Homepage spotlight, featured events and ad spots.</p></dialog>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="container">
       <p>&copy; <span id="currentyear"></span> Artist Collective — Andrew Godspower</p>
     </div>
   </footer>
 
   <script src="scripts/navigation.js" defer></script>
-  <script type="module" src="scripts/main.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', ()=> {
-      const y = document.getElementById('currentyear'); if(y) y.textContent = new Date().getFullYear();
-      const ts = document.getElementById('ts'); if(ts) ts.value = new Date().toISOString();
-
-      // Display submitted form values using URLSearchParams (form action page requirement)
-      const params = new URLSearchParams(window.location.search);
-      if ([...params].length > 0) {
-        const res = (name) => params.get(name) || '—';
-        document.getElementById('res-name').textContent = `${res('first')} ${res('last')}`;
-        document.getElementById('res-email').textContent = res('email');
-        document.getElementById('res-phone').textContent = res('phone');
-        document.getElementById('res-org').textContent = res('organization');
-        document.getElementById('res-level').textContent = res('level');
-        document.getElementById('res-ts').textContent = res('timestamp') || new Date().toISOString();
-        document.getElementById('formResult').style.display = 'block';
-        // Optionally hide the form itself so the action page looks like a confirmation
-        document.getElementById('joinForm').style.display = 'none';
-      }
-    });
-  </script>
+  <script src="scripts/init.js" defer></script>
+  <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

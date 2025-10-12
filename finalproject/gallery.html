@@ -11,17 +11,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/small.css">
   <link rel="stylesheet" href="styles/large.css">
+  <link rel="canonical" href="https://godspower2006.github.io/wdd231/finalproject/gallery.html">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <header class="site-header" role="banner">
+  <header class="site-header">
     <div class="header-inner container">
       <a class="logo" href="index.html" aria-label="Artist Collective home">
         <img src="images/logo.png" alt="Artist Collective logo" width="48" height="48">
       </a>
       <button id="nav-button" class="hamburger" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">☰</button>
-      <nav id="nav-bar" class="navigation" role="navigation" aria-label="Main navigation">
+      <nav id="nav-bar" class="navigation" aria-label="Main navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="gallery.html" aria-current="page">Gallery</a></li>
@@ -32,18 +33,19 @@
     </div>
   </header>
 
-  <main id="main" class="page-main container" role="main">
+  <main id="main" class="page-main container">
     <h1>Gallery</h1>
     <p class="muted">Click an artwork card for details.</p>
 
     <section id="gallery" class="gallery-grid" aria-live="polite">
-      <!-- main.js will populate gallery cards from data/items.json -->
+      <!-- populated by scripts/main.js -->
     </section>
 
+    <!-- reused detail dialog -->
     <dialog id="detailDialog" aria-labelledby="dialogTitle"></dialog>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="container contact">
       <p>Artist Collective — 10 Art Lane, Alimosho</p>
       <p>Email: godspowerandrew886@gmail.com • Phone: (234) 708-852-0985</p>
@@ -54,9 +56,7 @@
   </footer>
 
   <script src="scripts/navigation.js" defer></script>
-  <script type="module" src="scripts/main.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', ()=>{const y=document.getElementById('currentyear'); if(y) y.textContent=new Date().getFullYear();});
-  </script>
+  <script src="scripts/init.js" defer></script>
+  <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

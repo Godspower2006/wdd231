@@ -138,10 +138,9 @@ function initMembershipModals() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // Grab elements after DOM ready (works across pages)
   const galleryContainer = document.getElementById('gallery');
-  const discoverContainer = document.getElementById('discoverGrid'); // matches index.html
-  const dialog = document.getElementById('detailDialog') || document.getElementById('detailDialog') || document.getElementById('detailDialog'); // safe get
+  const discoverContainer = document.getElementById('discoverGrid');
+  const dialog = document.getElementById('detailDialog');
 
   await buildGallery(galleryContainer, dialog);
   await buildDiscover(discoverContainer);

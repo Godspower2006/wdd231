@@ -1,0 +1,7 @@
+/* styles/discover.css - lightweight styles for the discover grid */
+.discover-grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width:700px) {
+  .discover-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.place-card img { width:100%; height:auto; border-radius:6px; display:block; }
+.place-card address { font-style:normal; font-size:0.95rem; color:var(--muted); }

@@ -52,11 +52,11 @@ footer.site-footer{margin-top:1.5rem;padding:1rem;background:var(--surface);bord
 /* focus */
 :focus{outline:3px solid var(--focus);outline-offset:3px;padding:calc(.5rem - 3px);}
 
-/* responsive */
-@media (min-width:700px){
-  .navigation{display:block}
-  .navigation ul{flex-direction:row;gap:1rem}
-  .gallery-grid{grid-template-columns:repeat(3,1fr)}
-  .levels{grid-template-columns:repeat(2,1fr)}
-  .discover-grid{grid-template-columns:repeat(2,1fr)}
+/* small-screen heroes */
+@media (max-width:420px){
+  .hero{grid-template-columns: 1fr; gap:.5rem}
+  .hero-cta{position:static;margin-top:.5rem}
+  .hero-media{min-height:auto}
 }
+
+/* larger screens will be handled in large.css */
